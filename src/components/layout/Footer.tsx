@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Facebook, Instagram } from "lucide-react";
 import { categories } from "@/lib/products";
 
 export const Footer = () => {
@@ -77,6 +78,23 @@ export const Footer = () => {
           <p className="text-background/50 text-xs sm:text-sm text-center sm:text-left">
             © {new Date().getFullYear()} Aurum. All rights reserved.
           </p>
+
+          <div className="flex flex-wrap justify-center gap-4 sm:gap-6 text-xs sm:text-sm">
+            <Link
+                to="https://www.instagram.com/aznaoure/"
+                target="_blank"
+                className="text-background/50 hover:text-background transition-colors duration-300"
+            >
+              <Instagram />
+            </Link>
+            <Link
+                to="https://www.facebook.com/aznaoure"
+                target="_blank"
+                className="text-background/50 hover:text-background transition-colors duration-300"
+            >
+              <Facebook />
+            </Link>
+          </div>
         </div>
       </div>
     </footer>
