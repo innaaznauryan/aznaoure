@@ -82,7 +82,7 @@ const Index = () => {
               >
                 <Link
                   to={`/collections?category=${category.id}`}
-                  className="group block text-center p-4 sm:p-6 lg:p-8 bg-background rounded-sm hover:shadow-card transition-all duration-300"
+                  className="h-full group block text-center p-4 sm:p-6 lg:p-8 bg-background rounded-sm hover:shadow-card transition-all duration-300"
                 >
                   <h3 className="font-serif text-lg sm:text-xl lg:text-2xl mb-1 sm:mb-2 group-hover:text-primary transition-colors">
                     {category.name}

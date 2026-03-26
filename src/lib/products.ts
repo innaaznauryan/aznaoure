@@ -3,7 +3,7 @@ import productNecklace1 from "@/assets/product-necklace-1.jpg";
 import productEarrings1 from "@/assets/product-earrings-1.jpg";
 import productBracelet1 from "@/assets/product-bracelet-1.jpg";
 
-export type Category = "rings" | "necklaces" | "earrings" | "bracelets";
+export type Category = "rings" | "necklaces" | "earrings" | "bracelets" | "brooches";
 
 export interface Product {
   id: string;
@@ -21,6 +21,7 @@ export const categories: { id: Category; name: string; description: string }[] =
   { id: "necklaces", name: "Necklaces", description: "Graceful pendants and chains" },
   { id: "earrings", name: "Earrings", description: "From subtle studs to statement pieces" },
   { id: "bracelets", name: "Bracelets", description: "Wrist adornments of distinction" },
+  { id: "brooches", name: "Brooches", description: "Elegant brooches to add a refined touch" },
 ];
 
 export const products: Product[] = [
