@@ -1,16 +1,14 @@
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowLeft, ShoppingBag, Heart } from "lucide-react";
+import { ArrowLeft, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { getProductById, getFeaturedProducts } from "@/lib/products";
-import { useCart } from "@/context/CartContext";
 import { ProductCard } from "@/components/products/ProductCard";
 import { formatPrice } from "@/lib/utils";
 
 const ProductDetail = () => {
   const { id } = useParams<{ id: string }>();
   const product = getProductById(id || "");
-  const { dispatch } = useCart();
   const relatedProducts = getFeaturedProducts()
     .filter((p) => p.id !== id)
     .slice(0, 4);
@@ -100,15 +98,10 @@ const ProductDetail = () => {
 
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-auto">
                 <Button
-                  variant="luxury"
+                  variant="luxuryOutline"
                   size="lg"
-                  className="sm:size-xl flex-1"
-                  onClick={() => dispatch({ type: "ADD_ITEM", product })}
+                  className="sm:size-xl sm:flex-shrink-0"
                 >
-                  <ShoppingBag className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
-                  Add to Bag
-                </Button>
-                <Button variant="luxuryOutline" size="lg" className="sm:size-xl sm:flex-shrink-0">
                   <Heart className="h-4 w-4 sm:h-5 sm:w-5" />
                 </Button>
               </div>

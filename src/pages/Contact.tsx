@@ -120,13 +120,6 @@ const Contact = () => {
                   </div>
                 </div>
               </div>
-
-              {/* Map Placeholder */}
-              <div className="bg-muted aspect-video rounded-sm flex items-center justify-center">
-                <p className="text-muted-foreground">
-                  Interactive map coming soon
-                </p>
-              </div>
             </motion.div>
 
             {/* Contact Form */}
@@ -216,33 +209,6 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Private Consultation CTA */}
-      <section className="py-12 sm:py-16 lg:py-24 bg-foreground text-background">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="max-w-2xl mx-auto text-center"
-          >
-            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl mb-4 sm:mb-6">
-              Private Consultation
-            </h2>
-            <p className="text-background/70 text-sm sm:text-base lg:text-lg mb-6 sm:mb-8 px-4">
-              Experience the art of personalized service. Schedule a private
-              appointment with our specialists for bespoke jewelry creation or
-              exclusive collection viewings.
-            </p>
-            <Button
-              variant="outline"
-              size="lg"
-              className="sm:size-xl w-full sm:w-auto border-background/30 text-background hover:bg-background hover:text-foreground"
-            >
-              Request an Appointment
-            </Button>
-          </motion.div>
-        </div>
-      </section>
     </div>
   );
 };

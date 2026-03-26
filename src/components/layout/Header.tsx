@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, ShoppingBag } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { useCart } from "@/context/CartContext";
+import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
@@ -15,7 +13,6 @@ const navLinks = [
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
-  const { dispatch, totalItems } = useCart();
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
@@ -60,21 +57,6 @@ export const Header = () => {
               </Link>
             ))}
           </nav>
-
-          {/* Cart Button */}
-          <Button
-            variant="ghost"
-            size="icon"
-            className="relative"
-            onClick={() => dispatch({ type: "TOGGLE_CART" })}
-          >
-            <ShoppingBag className="h-5 w-5" />
-            {totalItems > 0 && (
-              <span className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-primary text-primary-foreground text-xs flex items-center justify-center">
-                {totalItems}
-              </span>
-            )}
-          </Button>
         </div>
       </div>
 

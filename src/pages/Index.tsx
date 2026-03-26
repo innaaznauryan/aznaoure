@@ -197,29 +197,6 @@ const Index = () => {
           </motion.div>
         </div>
       </section>
-
-      {/* CTA */}
-      <section className="py-12 sm:py-16 lg:py-24 bg-champagne">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="max-w-2xl mx-auto text-center"
-          >
-            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-4 sm:mb-6">
-              Begin Your Journey
-            </h2>
-            <p className="text-muted-foreground text-base sm:text-lg mb-6 sm:mb-8 px-4">
-              Our concierge team is ready to help you find the perfect piece
-              for any occasion.
-            </p>
-            <Button variant="luxury" size="lg" className="sm:size-xl w-full sm:w-auto" asChild>
-              <Link to="/contact">Schedule a Consultation</Link>
-            </Button>
-          </motion.div>
-        </div>
-      </section>
     </div>
   );
 };

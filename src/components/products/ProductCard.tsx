@@ -1,9 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Product } from "@/lib/products";
-import { Button } from "@/components/ui/button";
-import { useCart } from "@/context/CartContext";
-import { ShoppingBag } from "lucide-react";
 import { formatPrice } from "@/lib/utils";
 
 interface ProductCardProps {
@@ -12,8 +9,6 @@ interface ProductCardProps {
 }
 
 export const ProductCard = ({ product, index = 0 }: ProductCardProps) => {
-  const { dispatch } = useCart();
-
   return (
     <motion.article
       initial={{ opacity: 0, y: 20 }}
@@ -44,14 +39,6 @@ export const ProductCard = ({ product, index = 0 }: ProductCardProps) => {
         </Link>
         <div className="flex items-center justify-between pt-2">
           <p className="font-sans text-lg">{formatPrice(product.price)}</p>
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => dispatch({ type: "ADD_ITEM", product })}
-            className="opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-          >
-            <ShoppingBag className="h-5 w-5" />
-          </Button>
         </div>
       </div>
     </motion.article>
