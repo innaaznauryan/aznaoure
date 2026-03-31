@@ -1,7 +1,12 @@
-import productRing1 from "@/assets/product-ring-1.jpg";
-import productNecklace1 from "@/assets/product-necklace-1.jpg";
-import productEarrings1 from "@/assets/product-earrings-1.jpg";
-import productBracelet1 from "@/assets/product-bracelet-1.jpg";
+import productNecklace3Apples from "@/assets/product-necklace-3apples.jpg";
+import productEarringsDilijan from "@/assets/product-earrings-dilijan.jpg";
+import productEarringsGyumri from "@/assets/product-earrings-gyumri.jpg";
+import productNecklaceMelancholy from "@/assets/product-necklace-melancholy.jpg";
+import productRingManuscripts from "@/assets/product-ring-manuscripts.jpg";
+import productBraceletManuscripts from "@/assets/product-bracelet-manuscripts.jpg";
+import productBroochManuscripts from "@/assets/product-brooch-manuscripts.jpg";
+import productEarringsManuscripts from "@/assets/product-earrings-manuscripts.jpg";
+import productNecklaceManuscripts from "@/assets/product-necklace-manuscripts.jpg";
 
 export type Category = "rings" | "necklaces" | "earrings" | "bracelets" | "brooches";
 
@@ -14,6 +19,7 @@ export interface Product {
   description: string;
   details: string[];
   featured?: boolean;
+  favorite?: boolean;
 }
 
 export const categories: { id: Category; name: string; description: string }[] = [
@@ -26,119 +32,117 @@ export const categories: { id: Category; name: string; description: string }[] =
 
 export const products: Product[] = [
   {
-    id: "celestial-diamond-ring",
-    name: "Celestial Diamond Ring",
-    price: 4850,
-    category: "rings",
-    image: productRing1,
-    description: "A breathtaking 2-carat diamond set in 18k rose gold, featuring an intricate halo design that captures light from every angle.",
-    details: [
-      "2-carat center diamond, VS1 clarity",
-      "18k rose gold band",
-      "Halo setting with 24 accent diamonds",
-      "Handcrafted in our Paris atelier",
-    ],
-    featured: true,
-  },
-  {
-    id: "aurora-pendant-necklace",
-    name: "Aurora Pendant Necklace",
-    price: 3200,
+    id: "three-apples-necklace",
+    name: "Three Apples Fell from the Sky Necklace",
+    price: 38000,
     category: "necklaces",
-    image: productNecklace1,
-    description: "Inspired by the northern lights, this stunning pendant features a brilliant-cut diamond encircled by delicate gold filigree.",
+    image: productNecklace3Apples,
+    description: "Inspired by Armenian fairy-tales. And three apples fell from the sky: one for the teller, one for the listener, and one for the one who understands the meaning.",
     details: [
-      "1.5-carat brilliant-cut diamond",
-      "18k yellow gold chain and setting",
-      "Adjustable 16-18 inch chain",
-      "Certificate of authenticity included",
+      "925 Sterling Silver",
+      "16 g",
     ],
     featured: true,
   },
   {
-    id: "eternal-hoop-earrings",
-    name: "Eternal Hoop Earrings",
-    price: 2400,
+    id: "five-pillars-dilijan-earrings",
+    name: "Five Pillars of Dilijan Earrings",
+    price: 30000,
     category: "earrings",
-    image: productEarrings1,
-    description: "Classic hoops reimagined with pavé-set diamonds along the exterior, creating an endless sparkle that moves with you.",
+    image: productEarringsDilijan,
+    description: "Inspired by Armenian post-modernism and Five Pillars of Dilijan Monument",
     details: [
-      "48 pavé-set diamonds totaling 1.2 carats",
-      "18k yellow gold",
-      "30mm diameter",
-      "Secure click-top closure",
+      "925 Sterling Silver",
+      "8.5 g",
     ],
     featured: true,
   },
   {
-    id: "heritage-chain-bracelet",
-    name: "Heritage Chain Bracelet",
-    price: 2800,
-    category: "bracelets",
-    image: productBracelet1,
-    description: "A modern interpretation of our signature chain link design, adorned with diamond accents at each connection.",
-    details: [
-      "18k yellow gold",
-      "12 bezel-set diamonds",
-      "7.5 inch length",
-      "Double safety clasp",
-    ],
-    featured: true,
-  },
-  {
-    id: "moonlight-solitaire-ring",
-    name: "Moonlight Solitaire",
-    price: 6200,
-    category: "rings",
-    image: productRing1,
-    description: "Pure elegance in its simplest form. A flawless 3-carat diamond mounted on a whisper-thin platinum band.",
-    details: [
-      "3-carat round brilliant diamond",
-      "Platinum band",
-      "Six-prong setting",
-      "GIA certified",
-    ],
-  },
-  {
-    id: "cascade-drop-earrings",
-    name: "Cascade Drop Earrings",
-    price: 1850,
+    id: "fountains-gyumri-earrings",
+    name: "Fountains of Gyumri Studs and Mono Earring",
+    price: 46000,
     category: "earrings",
-    image: productEarrings1,
-    description: "Delicate drops of diamonds that dance with your every movement, creating a cascade of brilliance.",
+    image: productEarringsGyumri,
+    description: "Inspired by Armenian post-modernism and famous Fountains of Gyumri",
     details: [
-      "18k white gold",
-      "32 graduated diamonds",
-      "2.5 inch drop length",
-      "Lever-back closure",
+      "925 Sterling Silver",
+      "12 g",
     ],
+    featured: true,
   },
   {
-    id: "serpent-cuff-bracelet",
-    name: "Serpent Cuff",
-    price: 3400,
-    category: "bracelets",
-    image: productBracelet1,
-    description: "A bold statement piece featuring our iconic serpent motif, with emerald eyes and diamond scales.",
-    details: [
-      "18k yellow gold",
-      "2 emerald eyes (0.8ct total)",
-      "Diamond scales (2.4ct total)",
-      "Adjustable cuff design",
-    ],
-  },
-  {
-    id: "pearl-strand-necklace",
-    name: "South Sea Pearl Strand",
-    price: 5600,
+    id: "melancholy-necklace",
+    name: "Melancholy Necklace",
+    price: 36000,
     category: "necklaces",
-    image: productNecklace1,
-    description: "Luminous South Sea pearls, hand-selected for their perfect luster and matched in a graduated strand.",
+    image: productNecklaceMelancholy,
+    description: "Inspired by Albrecht Dürer’s artwork Melencolia I, with a magic square where all sums are equal - a perfect balance of art and logic.",
     details: [
-      "33 South Sea pearls",
-      "9-12mm graduated size",
-      "18k gold clasp with diamonds",
-      "18 inch length",
+      "925 Sterling Silver",
+      "9 g",
+    ],
+    featured: true,
+    favorite: true,
+  },
+  {
+    id: "manuscripts-ring",
+    name: "Manuscripts don't burn Ring",
+    price: 26000,
+    category: "rings",
+    image: productRingManuscripts,
+    description: "Inspired by Mikhail Bulgakov’s timeless words: ‘Manuscripts don’t burn’. It reminds us that even if words are erased or pages disappear, the meaning behind them continues to live.",
+    details: [
+      "925 Sterling Silver",
+      "5.5 g",
+    ],
+    favorite: true,
+  },
+  {
+    id: "manuscripts-bracelet",
+    name: "Manuscripts don't burn Bracelet",
+    price: 17000,
+    category: "bracelets",
+    image: productBraceletManuscripts,
+    description: "Inspired by Mikhail Bulgakov’s timeless words: ‘Manuscripts don’t burn’. It reminds us that even if words are erased or pages disappear, the meaning behind them continues to live.",
+    details: [
+      "925 Sterling Silver",
+      "4.5 g",
+    ],
+  },
+  {
+    id: "manuscripts-brooch",
+    name: "Manuscripts don't burn Brooch",
+    price: 28000,
+    category: "brooches",
+    image: productBroochManuscripts,
+    description: "Inspired by Mikhail Bulgakov’s timeless words: ‘Manuscripts don’t burn’. It reminds us that even if words are erased or pages disappear, the meaning behind them continues to live.",
+    details: [
+      "925 Sterling Silver",
+      "5 g",
+    ],
+  },
+  {
+    id: "manuscripts-earrings",
+    name: "Manuscripts don't burn Earrings",
+    price: 19000,
+    category: "earrings",
+    image: productEarringsManuscripts,
+    description: "Inspired by Mikhail Bulgakov’s timeless words: ‘Manuscripts don’t burn’. It reminds us that even if words are erased or pages disappear, the meaning behind them continues to live.",
+    details: [
+      "925 Sterling Silver",
+      "5.6 g",
+    ],
+  },
+  {
+    id: "manuscripts-necklace",
+    name: "Manuscripts don't burn Necklace",
+    price: 28000,
+    category: "necklaces",
+    image: productNecklaceManuscripts,
+    description: "Inspired by Mikhail Bulgakov’s timeless words: ‘Manuscripts don’t burn’. It reminds us that even if words are erased or pages disappear, the meaning behind them continues to live.",
+    details: [
+      "925 Sterling Silver",
+      "6 g",
     ],
   },
 ];
@@ -149,6 +153,10 @@ export const getProductsByCategory = (category: Category): Product[] => {
 
 export const getFeaturedProducts = (): Product[] => {
   return products.filter((product) => product.featured);
+};
+
+export const getFavoriteProducts = (): Product[] => {
+  return products.filter((product) => product.favorite);
 };
 
 export const getProductById = (id: string): Product | undefined => {
