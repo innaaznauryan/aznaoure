@@ -1,29 +1,16 @@
-import { useState, useMemo } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useMemo } from "react";
 import { motion } from "framer-motion";
 import { ProductCard } from "@/components/products/ProductCard";
-import { products, categories, Category } from "@/lib/products";
+import { useCategoryChange } from "@/hooks/use-category-change.tsx";
+import {products, categories, getProductsByCategory} from "@/lib/products";
 
 const Collections = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const categoryParam = searchParams.get("category") as Category | null;
-  const [selectedCategory, setSelectedCategory] = useState<Category | null>(
-    categoryParam
-  );
+  const { selectedCategory, handleCategoryChange } = useCategoryChange();
 
   const filteredProducts = useMemo(() => {
     if (!selectedCategory) return products;
-    return products.filter((product) => product.category === selectedCategory);
+    return getProductsByCategory(selectedCategory);
   }, [selectedCategory]);
-
-  const handleCategoryChange = (category: Category | null) => {
-    setSelectedCategory(category);
-    if (category) {
-      setSearchParams({ category });
-    } else {
-      setSearchParams({});
-    }
-  };
 
   return (
     <div className="min-h-screen">
