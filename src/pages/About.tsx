@@ -18,7 +18,7 @@ const About = () => {
             <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-4 sm:mb-6">
               From Inspiration to Jewelry
             </h1>
-            <div className="luxury-divider" />
+            <div className="luxury-divider mt-6 sm:mt-8" />
           </motion.div>
         </div>
       </section>
