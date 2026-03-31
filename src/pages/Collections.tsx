@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import { motion } from "framer-motion";
 import { ProductCard } from "@/components/products/ProductCard";
 import { useCategoryChange } from "@/hooks/use-category-change.tsx";
-import {products, categories, getProductsByCategory} from "@/lib/products";
+import { products, categories, getProductsByCategory } from "@/lib/products";
 
 const Collections = () => {
   const { selectedCategory, handleCategoryChange } = useCategoryChange();
