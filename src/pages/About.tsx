@@ -16,7 +16,7 @@ const About = () => {
           >
             <p className="luxury-subheading mb-3 sm:mb-4">Our Story</p>
             <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-4 sm:mb-6">
-              A Legacy of Excellence
+              From Inspiration to Jewelry
             </h1>
             <div className="luxury-divider" />
           </motion.div>
@@ -34,7 +34,7 @@ const About = () => {
             >
               <img
                 src={aboutImage}
-                alt="Aurum atelier"
+                alt="Aznaoure atelier"
                 className="w-full h-auto rounded-sm shadow-elevated"
               />
             </motion.div>
@@ -45,21 +45,21 @@ const About = () => {
               viewport={{ once: true }}
               className="space-y-6"
             >
-              <p className="luxury-subheading">Since 1892</p>
+              <p className="luxury-subheading">Since 2025</p>
               <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl">
-                Crafting Dreams in Gold
+                Crafting Dreams in Silver
               </h2>
               <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
-                For over a century, Aurum has been synonymous with exceptional
-                craftsmanship and timeless design. Founded in the heart of Paris
-                by master jeweler Henri Duval, our maison has remained true to
-                its founding principles: uncompromising quality, innovative
-                design, and a deep respect for the art of jewelry making.
+                At our studio, jewelry begins with an idea.
               </p>
               <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
-                Each piece that leaves our atelier carries with it the expertise
-                of generations of artisans. From the initial sketch to the final
-                polish, every step is executed with precision and passion.
+                We are a creative jewelry concept brand dedicated to transforming inspiration into distinctive designs. Every piece starts as a story — a thought, a symbol, or a moment — which we translate into jewelry that feels meaningful and expressive.
+              </p>
+              <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
+                Our work is guided by a passion for artistry, originality, and thoughtful design. From the first sketch to the final creation, each concept is developed with attention to detail and a deep respect for the beauty of craftsmanship.
+              </p>
+              <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
+                We believe jewelry is more than decoration. It is a form of self-expression, a small work of art that carries emotion, identity, and imagination.
               </p>
             </motion.div>
           </div>
@@ -88,17 +88,16 @@ const About = () => {
               {
                 title: "Artistry",
                 description:
-                  "Our master craftsmen dedicate their lives to perfecting their art. Each piece is a testament to decades of expertise passed down through generations.",
+                  "Creativity is at the heart of everything we do. Each design begins with an idea and evolves through sketching, experimentation, and careful attention to detail until it becomes a piece of wearable art.",
               },
               {
                 title: "Integrity",
                 description:
-                  "We source only the finest materials, ethically obtained and meticulously verified. Transparency and trust are the foundations of our relationships.",
-              },
+                  "We value honesty, quality, and respect for our craft. Every design is created thoughtfully, with attention to materials and a commitment to building trust with those who appreciate our work."              },
               {
                 title: "Innovation",
                 description:
-                  "While honoring traditional techniques, we embrace innovation. Our designs blend classical elegance with contemporary vision.",
+                  "We are inspired by both tradition and imagination. By exploring new ideas, forms, and concepts, we create jewelry that blends timeless elegance with a modern creative vision.",
               },
             ].map((value, index) => (
               <motion.div
@@ -131,11 +130,10 @@ const About = () => {
             className="max-w-2xl mx-auto text-center"
           >
             <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl mb-4 sm:mb-6">
-              Experience Aurum
+              Experience Aznaoure Art
             </h2>
             <p className="text-muted-foreground text-sm sm:text-base lg:text-lg mb-6 sm:mb-8 px-4">
-              Visit our flagship boutique on Place Vendôme or schedule a private
-              appointment with our concierge team.
+              Discover our creations and explore the ideas behind every design. Each piece is crafted to express individuality, creativity, and the beauty of thoughtful design.
             </p>
             <Button variant="luxury" size="lg" className="sm:size-xl w-full sm:w-auto" asChild>
               <Link to="/contact">Contact Us</Link>

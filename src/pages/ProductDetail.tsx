@@ -105,10 +105,6 @@ const ProductDetail = () => {
                   <Heart className="h-4 w-4 sm:h-5 sm:w-5" />
                 </Button>
               </div>
-
-              <p className="text-muted-foreground text-xs sm:text-sm mt-4 sm:mt-6">
-                Complimentary shipping worldwide. 30-day returns.
-              </p>
             </motion.div>
           </div>
         </div>

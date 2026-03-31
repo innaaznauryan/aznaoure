@@ -1,6 +1,7 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { Phone, Mail, Facebook, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -53,8 +54,7 @@ const Contact = () => {
               Contact Us
             </h1>
             <p className="text-muted-foreground text-sm sm:text-base lg:text-lg px-4">
-              Our concierge team is here to assist you with any inquiries or to
-              schedule a private consultation.
+              Our concierge team is here to assist you with any inquiries.
             </p>
             <div className="luxury-divider mt-6 sm:mt-8" />
           </motion.div>
@@ -74,18 +74,34 @@ const Contact = () => {
             >
               <div>
                 <h2 className="font-serif text-2xl sm:text-3xl mb-6 sm:mb-8">
-                  Visit Our Flagship Boutique
+                  Visit Us
                 </h2>
                 <div className="space-y-4 sm:space-y-6">
                   <div className="flex gap-4">
-                    <MapPin className="h-6 w-6 text-primary flex-shrink-0" />
+                    <Facebook className="h-6 w-6 text-primary flex-shrink-0" />
                     <div>
-                      <p className="font-medium">Address</p>
-                      <p className="text-muted-foreground">
-                        12 Place Vendôme
-                        <br />
-                        75001 Paris, France
-                      </p>
+                      <p className="font-medium">Facebook</p>
+                      <Link
+                        className="text-muted-foreground"
+                        to="https://www.facebook.com/aznaoure"
+                        target="_blank"
+                      >
+                        Aznaoure Art Facebook
+                      </Link>
+                    </div>
+                  </div>
+
+                  <div className="flex gap-4">
+                    <Instagram className="h-6 w-6 text-primary flex-shrink-0" />
+                    <div>
+                      <p className="font-medium">Instagram</p>
+                      <Link
+                          className="text-muted-foreground"
+                          to="https://www.instagram.com/aznaoure"
+                          target="_blank"
+                      >
+                        Aznaoure Art Instagram
+                      </Link>
                     </div>
                   </div>
 
@@ -93,7 +109,12 @@ const Contact = () => {
                     <Phone className="h-6 w-6 text-primary flex-shrink-0" />
                     <div>
                       <p className="font-medium">Phone</p>
-                      <p className="text-muted-foreground">+33 1 42 61 00 00</p>
+                      <Link
+                        className="text-muted-foreground"
+                        to="tel:+37493629370"
+                      >
+                        (+374) 93 629 370
+                      </Link>
                     </div>
                   </div>
 
@@ -101,21 +122,12 @@ const Contact = () => {
                     <Mail className="h-6 w-6 text-primary flex-shrink-0" />
                     <div>
                       <p className="font-medium">Email</p>
-                      <p className="text-muted-foreground">
-                        concierge@aurum.com
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex gap-4">
-                    <Clock className="h-6 w-6 text-primary flex-shrink-0" />
-                    <div>
-                      <p className="font-medium">Hours</p>
-                      <p className="text-muted-foreground">
-                        Monday – Saturday: 10:00 – 19:00
-                        <br />
-                        Sunday: By appointment only
-                      </p>
+                      <Link
+                        to="mailto:aznaoure@gmail.com"
+                        className="text-muted-foreground"
+                      >
+                        aznaoure@gmail.com
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -168,7 +180,7 @@ const Contact = () => {
                   <Input
                     id="phone"
                     type="tel"
-                    placeholder="+1 (555) 000-0000"
+                    placeholder="(+374) 00 000 000"
                     className="mt-2"
                   />
                 </div>

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Facebook, Instagram } from "lucide-react";
 import { categories } from "@/lib/products";
+import logo from "@/assets/logo-silver.png";
 
 export const Footer = () => {
   return (
@@ -9,9 +10,11 @@ export const Footer = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-12">
           {/* Brand */}
           <div className="space-y-3 sm:space-y-4">
-            <h2 className="font-serif text-2xl sm:text-3xl tracking-wide">AURUM</h2>
+            <h2>
+              <img src={logo} alt="logo" className="w-32 object-cover"/>
+            </h2>
             <p className="text-background/70 font-light leading-relaxed text-sm sm:text-base">
-              Crafting timeless elegance since 1892. Each piece tells a story of
+              Crafting timeless elegance since 2025. Each piece tells a story of
               exceptional artistry and enduring beauty.
             </p>
           </div>
@@ -43,9 +46,7 @@ export const Footer = () => {
             <ul className="space-y-3">
               {[
                 { label: "About Us", href: "/about" },
-                { label: "Contact", href: "/contact" },
-                { label: "Careers", href: "#" },
-                { label: "Press", href: "#" },
+                { label: "Home", href: "/" },
               ].map((item) => (
                 <li key={item.label}>
                   <Link
@@ -65,10 +66,8 @@ export const Footer = () => {
               Contact
             </h3>
             <address className="text-background/70 not-italic space-y-2">
-              <p>12 Place Vendôme</p>
-              <p>75001 Paris, France</p>
-              <p className="pt-2">+33 1 42 61 00 00</p>
-              <p>concierge@aurum.com</p>
+              <p className="pt-2">(+374) 93 629 370</p>
+              <p>aznaoure@gmail.com</p>
             </address>
           </div>
         </div>
@@ -76,12 +75,12 @@ export const Footer = () => {
         {/* Bottom */}
         <div className="mt-12 sm:mt-16 pt-6 sm:pt-8 border-t border-background/10 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-background/50 text-xs sm:text-sm text-center sm:text-left">
-            © {new Date().getFullYear()} Aurum. All rights reserved.
+            © {new Date().getFullYear()} Aznaoure Art. All rights reserved.
           </p>
 
           <div className="flex flex-wrap justify-center gap-4 sm:gap-6 text-xs sm:text-sm">
             <Link
-                to="https://www.instagram.com/aznaoure/"
+                to="https://www.instagram.com/aznaoure"
                 target="_blank"
                 className="text-background/50 hover:text-background transition-colors duration-300"
             >

@@ -13,7 +13,7 @@ export function cn(...inputs: ClassValue[]) {
 export const formatPrice = (price: number): string => {
   return new Intl.NumberFormat("en-US", {
     style: "currency",
-    currency: "USD",
+    currency: "AMD",
     minimumFractionDigits: 0,
   }).format(price);
 };

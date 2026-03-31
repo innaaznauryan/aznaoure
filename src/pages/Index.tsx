@@ -147,13 +147,13 @@ const Index = () => {
                 icon: Shield,
                 title: "Lifetime Warranty",
                 description:
-                  "Every Aurum creation is backed by our commitment to lasting excellence.",
+                  "Every Aznaoure Art creation is backed by our commitment to lasting excellence.",
               },
               {
                 icon: Truck,
                 title: "Complimentary Shipping",
                 description:
-                  "Enjoy free worldwide shipping on all orders, delivered in elegant packaging.",
+                  "Complimentary shipping in Armenia, with carefully arranged worldwide delivery, all in elegant packaging.",
               },
             ].map((feature, index) => (
               <motion.div
@@ -186,13 +186,11 @@ const Index = () => {
           >
             <p className="luxury-subheading mb-6 sm:mb-8">What Our Clients Say</p>
             <blockquote className="font-serif text-lg sm:text-xl md:text-2xl lg:text-3xl italic leading-relaxed mb-6 sm:mb-8 px-4">
-              "The Celestial Diamond Ring exceeded all expectations. The
-              craftsmanship is extraordinary, and it arrived beautifully
-              packaged. A truly unforgettable piece."
+              "A friend of mine admired my jewelry so much that I can't wait to gift her the same piece."
             </blockquote>
             <cite className="not-italic">
-              <span className="font-medium">Charlotte M.</span>
-              <span className="text-muted-foreground"> — Paris</span>
+              <span className="font-medium">Zhanna H.</span>
+              <span className="text-muted-foreground"> — Yerevan</span>
             </cite>
           </motion.div>
         </div>
