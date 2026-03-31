@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
+import logo from "@/assets/logo-bronze.png";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/collections", label: "Collections" },
+  { href: "/favorites", label: "Favorites" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
@@ -36,8 +38,8 @@ export const Header = () => {
             to="/"
             className="absolute left-1/2 -translate-x-1/2 lg:static lg:translate-x-0"
           >
-            <h1 className="font-serif text-xl sm:text-2xl lg:text-3xl tracking-wide text-foreground">
-              AURUM
+            <h1>
+              <img src={logo} alt="logo" className="w-40 object-cover"/>
             </h1>
           </Link>
 

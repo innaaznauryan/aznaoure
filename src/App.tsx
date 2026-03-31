@@ -8,6 +8,7 @@ import ScrollToTop from "@/components/ScrollToTop.tsx";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import Collections from "./pages/Collections";
+import Favorites from "@/pages/Favorites.tsx";
 import ProductDetail from "./pages/ProductDetail";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
@@ -26,6 +27,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/about" element={<About />} />
             <Route path="/collections" element={<Collections />} />
+            <Route path="/favorites" element={<Favorites />} />
             <Route path="/product/:id" element={<ProductDetail />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="*" element={<NotFound />} />
