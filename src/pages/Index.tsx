@@ -2,11 +2,13 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ProductCard } from "@/components/products/ProductCard";
-import { getFeaturedProducts, categories } from "@/lib/products";
+import { categories } from "@/lib/products.ts";
+import { useProducts } from "@/hooks/use-products.ts";
 import heroImage from "@/assets/hero-jewelry.jpg";
 import { ArrowRight, Diamond, Shield, Truck } from "lucide-react";
 
 const Index = () => {
+  const { getFeaturedProducts } = useProducts();
   const featuredProducts = getFeaturedProducts();
 
   return (

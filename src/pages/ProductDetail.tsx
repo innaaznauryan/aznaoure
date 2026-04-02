@@ -2,13 +2,15 @@ import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { getProductById, getFeaturedProducts } from "@/lib/products";
+import { useProducts } from "@/hooks/use-products.ts";
 import { ProductCard } from "@/components/products/ProductCard";
 import { formatPrice } from "@/lib/utils";
 
 const ProductDetail = () => {
   const { id } = useParams<{ id: string }>();
-  const product = getProductById(id || "");
+  const { getProductById, getFeaturedProducts } = useProducts();
+
+  const product = getProductById(id);
   const relatedProducts = getFeaturedProducts()
     .filter((p) => p.id !== id)
     .slice(0, 4);

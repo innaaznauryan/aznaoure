@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
 import { ProductCard } from "@/components/products/ProductCard";
-import { getFavoriteProducts } from "@/lib/products";
+import { useProducts } from "@/hooks/use-products.ts";
 
 const Favorites = () => {
+  const { getFavoriteProducts } = useProducts();
   const favoriteProducts = getFavoriteProducts();
 
   return (

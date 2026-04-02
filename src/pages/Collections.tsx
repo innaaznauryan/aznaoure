@@ -1,16 +1,16 @@
-import { useMemo } from "react";
 import { motion } from "framer-motion";
 import { ProductCard } from "@/components/products/ProductCard";
 import { useCategoryChange } from "@/hooks/use-category-change.tsx";
-import { products, categories, getProductsByCategory } from "@/lib/products";
+import { categories } from "@/lib/products.ts";
+import { useProducts } from "@/hooks/use-products.ts";
 
 const Collections = () => {
   const { selectedCategory, handleCategoryChange } = useCategoryChange();
+  const { products, getProductsByCategory } = useProducts();
 
-  const filteredProducts = useMemo(() => {
-    if (!selectedCategory) return products;
-    return getProductsByCategory(selectedCategory);
-  }, [selectedCategory]);
+  const filteredProducts = selectedCategory
+    ? getProductsByCategory(selectedCategory)
+    : products;
 
   return (
     <div className="min-h-screen">

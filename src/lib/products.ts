@@ -146,19 +146,3 @@ export const products: Product[] = [
     ],
   },
 ];
-
-export const getProductsByCategory = (category: Category): Product[] => {
-  return products.filter((product) => product.category === category);
-};
-
-export const getFeaturedProducts = (): Product[] => {
-  return products.filter((product) => product.featured);
-};
-
-export const getFavoriteProducts = (): Product[] => {
-  return products.filter((product) => product.favorite);
-};
-
-export const getProductById = (id: string): Product | undefined => {
-  return products.find((product) => product.id === id);
-};
