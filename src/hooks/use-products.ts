@@ -31,6 +31,15 @@ export const useProducts = () => {
     return products.find((p) => p.id === id);
   };
 
+  const toggleFavorite = (id: string) => {
+    const updatedProducts = products.map((product) =>
+      product.id === id ? { ...product, favorite: !product.favorite } : product
+    );
+
+    setProducts(updatedProducts);
+    localStorage.setItem("products", JSON.stringify(updatedProducts));
+  };
+
   return {
     products,
     setProducts,
@@ -38,5 +47,6 @@ export const useProducts = () => {
     getFeaturedProducts,
     getFavoriteProducts,
     getProductById,
+    toggleFavorite,
   };
 };

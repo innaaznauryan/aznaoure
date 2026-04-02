@@ -8,7 +8,7 @@ import { formatPrice } from "@/lib/utils";
 
 const ProductDetail = () => {
   const { id } = useParams<{ id: string }>();
-  const { getProductById, getFeaturedProducts } = useProducts();
+  const { getProductById, getFeaturedProducts, toggleFavorite } = useProducts();
 
   const product = getProductById(id);
   const relatedProducts = getFeaturedProducts()
@@ -104,8 +104,9 @@ const ProductDetail = () => {
                   variant="luxuryOutline"
                   size="lg"
                   className="sm:size-xl sm:flex-shrink-0"
+                  onClick={() => toggleFavorite(id)}
                 >
-                  <Heart className="h-4 w-4 sm:h-5 sm:w-5" />
+                  <Heart className={`h-4 w-4 sm:h-5 sm:w-5 ${product.favorite ? 'fill-gold' : ''}`} />
                 </Button>
               </div>
             </motion.div>
