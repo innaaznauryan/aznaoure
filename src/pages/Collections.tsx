@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
 import { ProductCard } from "@/components/products/ProductCard";
+import { PaginationControls } from "@/components/PaginationControls.tsx";
 import { useCategoryChange } from "@/hooks/use-category-change.tsx";
 import { categories } from "@/lib/products.ts";
 import { useProducts } from "@/hooks/use-products.ts";
+import { usePagination } from "@/hooks/use-pagination.tsx";
 
 const Collections = () => {
   const { selectedCategory, handleCategoryChange } = useCategoryChange();
@@ -11,6 +13,15 @@ const Collections = () => {
   const filteredProducts = selectedCategory
     ? getProductsByCategory(selectedCategory)
     : products;
+
+  const {
+    paginatedItems: currentProducts,
+    currentPage,
+    totalPages,
+    goToPage,
+    nextPage,
+    prevPage
+  } = usePagination(filteredProducts);
 
   return (
     <div className="min-h-screen">
@@ -70,7 +81,7 @@ const Collections = () => {
       <section className="py-8 sm:py-12 lg:py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8">
-            {filteredProducts.map((product, index) => (
+            {currentProducts.map((product, index) => (
               <ProductCard key={product.id} product={product} index={index} />
             ))}
           </div>
@@ -84,6 +95,15 @@ const Collections = () => {
           )}
         </div>
       </section>
+
+      {/* Pagination */}
+      <PaginationControls
+        currentPage={currentPage}
+        totalPages={totalPages}
+        goToPage={goToPage}
+        nextPage={nextPage}
+        prevPage={prevPage}
+      />
     </div>
   );
 };
