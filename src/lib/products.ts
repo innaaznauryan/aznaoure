@@ -1,12 +1,4 @@
-import productNecklace3Apples from "@/assets/product-necklace-3apples.jpg";
-import productEarringsDilijan from "@/assets/product-earrings-dilijan.jpg";
-import productEarringsGyumri from "@/assets/product-earrings-gyumri.jpg";
-import productNecklaceMelancholy from "@/assets/product-necklace-melancholy.jpg";
-import productRingManuscripts from "@/assets/product-ring-manuscripts.jpg";
-import productBraceletManuscripts from "@/assets/product-bracelet-manuscripts.jpg";
-import productBroochManuscripts from "@/assets/product-brooch-manuscripts.jpg";
-import productEarringsManuscripts from "@/assets/product-earrings-manuscripts.jpg";
-import productNecklaceManuscripts from "@/assets/product-necklace-manuscripts.jpg";
+import images from "./product-images";
 
 export type Category = "rings" | "necklaces" | "earrings" | "bracelets" | "brooches";
 
@@ -36,7 +28,7 @@ export const products: Product[] = [
     name: "Three Apples Fell from the Sky Necklace",
     price: 38000,
     category: "necklaces",
-    image: productNecklace3Apples,
+    image: images["product-necklace-3apples.jpg"],
     description: "Inspired by Armenian fairy-tales. And three apples fell from the sky: one for the teller, one for the listener, and one for the one who understands the meaning.",
     details: [
       "925 Sterling Silver",
@@ -49,7 +41,7 @@ export const products: Product[] = [
     name: "Five Pillars of Dilijan Earrings",
     price: 30000,
     category: "earrings",
-    image: productEarringsDilijan,
+    image: images["product-earrings-dilijan.jpg"],
     description: "Inspired by Armenian post-modernism and Five Pillars of Dilijan Monument",
     details: [
       "925 Sterling Silver",
@@ -62,7 +54,7 @@ export const products: Product[] = [
     name: "Fountains of Gyumri Studs and Mono Earring",
     price: 46000,
     category: "earrings",
-    image: productEarringsGyumri,
+    image: images["product-earrings-gyumri.jpg"],
     description: "Inspired by Armenian post-modernism and famous Fountains of Gyumri",
     details: [
       "925 Sterling Silver",
@@ -75,7 +67,7 @@ export const products: Product[] = [
     name: "Melancholy Necklace",
     price: 36000,
     category: "necklaces",
-    image: productNecklaceMelancholy,
+    image: images["product-necklace-melancholy.jpg"],
     description: "Inspired by Albrecht Dürer’s artwork Melencolia I, with a magic square where all sums are equal - a perfect balance of art and logic.",
     details: [
       "925 Sterling Silver",
@@ -89,7 +81,7 @@ export const products: Product[] = [
     name: "Manuscripts don't burn Ring",
     price: 26000,
     category: "rings",
-    image: productRingManuscripts,
+    image: images["product-ring-manuscripts.jpg"],
     description: "Inspired by Mikhail Bulgakov’s timeless words: ‘Manuscripts don’t burn’. It reminds us that even if words are erased or pages disappear, the meaning behind them continues to live.",
     details: [
       "925 Sterling Silver",
@@ -102,7 +94,7 @@ export const products: Product[] = [
     name: "Manuscripts don't burn Bracelet",
     price: 17000,
     category: "bracelets",
-    image: productBraceletManuscripts,
+    image: images["product-bracelet-manuscripts.jpg"],
     description: "Inspired by Mikhail Bulgakov’s timeless words: ‘Manuscripts don’t burn’. It reminds us that even if words are erased or pages disappear, the meaning behind them continues to live.",
     details: [
       "925 Sterling Silver",
@@ -114,7 +106,7 @@ export const products: Product[] = [
     name: "Manuscripts don't burn Brooch",
     price: 28000,
     category: "brooches",
-    image: productBroochManuscripts,
+    image: images["product-brooch-manuscripts.jpg"],
     description: "Inspired by Mikhail Bulgakov’s timeless words: ‘Manuscripts don’t burn’. It reminds us that even if words are erased or pages disappear, the meaning behind them continues to live.",
     details: [
       "925 Sterling Silver",
@@ -126,7 +118,7 @@ export const products: Product[] = [
     name: "Manuscripts don't burn Earrings",
     price: 19000,
     category: "earrings",
-    image: productEarringsManuscripts,
+    image: images["product-earrings-manuscripts.jpg"],
     description: "Inspired by Mikhail Bulgakov’s timeless words: ‘Manuscripts don’t burn’. It reminds us that even if words are erased or pages disappear, the meaning behind them continues to live.",
     details: [
       "925 Sterling Silver",
@@ -138,7 +130,7 @@ export const products: Product[] = [
     name: "Manuscripts don't burn Necklace",
     price: 28000,
     category: "necklaces",
-    image: productNecklaceManuscripts,
+    image: images["product-necklace-manuscripts.jpg"],
     description: "Inspired by Mikhail Bulgakov’s timeless words: ‘Manuscripts don’t burn’. It reminds us that even if words are erased or pages disappear, the meaning behind them continues to live.",
     details: [
       "925 Sterling Silver",
