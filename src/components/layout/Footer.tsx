@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
 import { Facebook, Instagram } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { categories } from "@/lib/products";
 import logo from "@/assets/logo-silver.png";
 
 export const Footer = () => {
+  const { t, i18n } = useTranslation();
+
   return (
     <footer className="bg-foreground text-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
@@ -14,24 +17,23 @@ export const Footer = () => {
               <img src={logo} alt="logo" className="w-32 object-cover"/>
             </h2>
             <p className="text-background/70 font-light leading-relaxed text-sm sm:text-base">
-              Crafting timeless elegance since 2025. Each piece tells a story of
-              exceptional artistry and enduring beauty.
+              {t("footer.description")}
             </p>
           </div>
 
           {/* Collections */}
           <div className="space-y-4">
             <h3 className="font-sans text-xs tracking-widest uppercase text-background/50">
-              Collections
+              {t("navigation.collections")}
             </h3>
             <ul className="space-y-3">
-              {categories.map((category) => (
-                <li key={category.id}>
+              {Object.entries(categories).map(([id, category]) => (
+                <li key={id}>
                   <Link
-                    to={`/collections?category=${category.id}`}
+                    to={`/collections?category=${id}`}
                     className="text-background/70 hover:text-background transition-colors duration-300"
                   >
-                    {category.name}
+                    {category.name[i18n.language]}
                   </Link>
                 </li>
               ))}
@@ -41,12 +43,12 @@ export const Footer = () => {
           {/* Company */}
           <div className="space-y-4">
             <h3 className="font-sans text-xs tracking-widest uppercase text-background/50">
-              Company
+              {t("footer.company")}
             </h3>
             <ul className="space-y-3">
               {[
-                { label: "About Us", href: "/about" },
-                { label: "Home", href: "/" },
+                { label: t("about.title"), href: "/about" },
+                { label: t("navigation.home"), href: "/" },
               ].map((item) => (
                 <li key={item.label}>
                   <Link
@@ -63,7 +65,7 @@ export const Footer = () => {
           {/* Contact */}
           <div className="space-y-4">
             <h3 className="font-sans text-xs tracking-widest uppercase text-background/50">
-              Contact
+              {t("navigation.contact")}
             </h3>
             <address className="text-background/70 not-italic space-y-2">
               <p className="pt-2">(+374) 93 629 370</p>
@@ -75,7 +77,7 @@ export const Footer = () => {
         {/* Bottom */}
         <div className="mt-12 sm:mt-16 pt-6 sm:pt-8 border-t border-background/10 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-background/50 text-xs sm:text-sm text-center sm:text-left">
-            © {new Date().getFullYear()} Aznaoure Art. All rights reserved.
+            © {new Date().getFullYear()} {t("footer.copyright")}
           </p>
 
           <div className="flex flex-wrap justify-center gap-4 sm:gap-6 text-xs sm:text-sm">

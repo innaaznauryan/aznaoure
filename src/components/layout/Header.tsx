@@ -2,20 +2,22 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import logo from "@/assets/logo-bronze.png";
 import LanguageSwitcher from "@/components/LanguageSwitcher.tsx";
 
-const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/collections", label: "Collections" },
-  { href: "/favorites", label: "Favorites" },
-  { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
-];
-
 export const Header = () => {
+  const { t } = useTranslation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+
+  const navLinks = [
+    { href: "/", label: t("navigation.home") },
+    { href: "/collections", label: t("navigation.collections") },
+    { href: "/favorites", label: t("navigation.favorites") },
+    { href: "/about", label: t("navigation.about") },
+    { href: "/contact", label: t("navigation.contact") },
+  ];
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">

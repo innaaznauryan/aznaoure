@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Phone, Mail, Facebook, Instagram } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -9,6 +10,7 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 
 const Contact = () => {
+  const { t } = useTranslation();
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -21,8 +23,8 @@ const Contact = () => {
       await new Promise((resolve) => setTimeout(resolve, 1500));
 
       toast({
-        title: "Message Sent",
-        description: "Thank you for reaching out. Our team will respond within 24 hours.",
+        title: t("contact.success.title"),
+        description: t("contact.success.description"),
       });
 
       // Reset form
@@ -30,8 +32,8 @@ const Contact = () => {
     } catch (error) {
       console.error("Error sending message:", error);
       toast({
-        title: "Error",
-        description: "There was an error sending your message. Please try again.",
+        title: t("contact.error.title"),
+        description: t("contact.error.description"),
         variant: "destructive",
       });
     } finally {
@@ -49,12 +51,12 @@ const Contact = () => {
             animate={{ opacity: 1, y: 0 }}
             className="max-w-3xl mx-auto text-center"
           >
-            <p className="luxury-subheading mb-3 sm:mb-4">Get in Touch</p>
+            <p className="luxury-subheading mb-3 sm:mb-4">{t("contact.subtitle")}</p>
             <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-4 sm:mb-6">
-              Contact Us
+              {t("contact.title")}
             </h1>
             <p className="text-muted-foreground text-sm sm:text-base lg:text-lg px-4">
-              Our concierge team is here to assist you with any inquiries.
+              {t("contact.description")}
             </p>
             <div className="luxury-divider mt-6 sm:mt-8" />
           </motion.div>
@@ -74,7 +76,7 @@ const Contact = () => {
             >
               <div>
                 <h2 className="font-serif text-2xl sm:text-3xl mb-6 sm:mb-8">
-                  Visit Us
+                  {t("contact.visit")}
                 </h2>
                 <div className="space-y-4 sm:space-y-6">
                   <div className="flex gap-4">
@@ -108,7 +110,7 @@ const Contact = () => {
                   <div className="flex gap-4">
                     <Phone className="h-6 w-6 text-primary flex-shrink-0" />
                     <div>
-                      <p className="font-medium">Phone</p>
+                      <p className="font-medium">{t("contact.phone")}</p>
                       <Link
                         className="text-muted-foreground"
                         to="tel:+37493629370"
@@ -121,7 +123,7 @@ const Contact = () => {
                   <div className="flex gap-4">
                     <Mail className="h-6 w-6 text-primary flex-shrink-0" />
                     <div>
-                      <p className="font-medium">Email</p>
+                      <p className="font-medium">{t("contact.email.label")}</p>
                       <Link
                         to="mailto:aznaoure@gmail.com"
                         className="text-muted-foreground"
@@ -140,67 +142,60 @@ const Contact = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="font-serif text-2xl sm:text-3xl mb-6 sm:mb-8">Send Us a Message</h2>
+              <h2 className="font-serif text-2xl sm:text-3xl mb-6 sm:mb-8">
+                {t("contact.sendMessage")}
+              </h2>
 
               <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
                 <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
                   <div>
-                    <Label htmlFor="firstName">First Name</Label>
+                    <Label htmlFor="firstName">{t("contact.fName.label")}</Label>
                     <Input
                       id="firstName"
                       required
-                      placeholder="Your first name"
+                      placeholder={t("contact.fName.placeholder")}
                       className="mt-2"
                     />
                   </div>
                   <div>
-                    <Label htmlFor="lastName">Last Name</Label>
+                    <Label htmlFor="lastName">{t("contact.lName.label")}</Label>
                     <Input
                       id="lastName"
                       required
-                      placeholder="Your last name"
+                      placeholder={t("contact.lName.placeholder")}
                       className="mt-2"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <Label htmlFor="email">Email</Label>
+                  <Label htmlFor="email">{t("contact.email.label")}</Label>
                   <Input
                     id="email"
                     type="email"
                     required
-                    placeholder="your@email.com"
+                    placeholder={t("contact.email.placeholder")}
                     className="mt-2"
                   />
                 </div>
 
                 <div>
-                  <Label htmlFor="phone">Phone (Optional)</Label>
+                  <Label htmlFor="phone">{t("contact.phone")}</Label>
                   <Input
                     id="phone"
                     type="tel"
+                    required
                     placeholder="(+374) 00 000 000"
                     className="mt-2"
                   />
                 </div>
 
                 <div>
-                  <Label htmlFor="subject">Subject</Label>
-                  <Input
-                    id="subject"
-                    required
-                    placeholder="How can we help?"
-                    className="mt-2"
-                  />
-                </div>
-
-                <div>
-                  <Label htmlFor="message">Message</Label>
+                  <Label htmlFor="message">{t("contact.message.label")}</Label>
                   <Textarea
                     id="message"
                     required
-                    placeholder="Tell us more about your inquiry..."
+                    placeholder={t("contact.message.placeholder")}
                     rows={6}
                     className="mt-2 resize-none"
                   />
@@ -213,7 +208,7 @@ const Contact = () => {
                   className="sm:size-xl w-full"
                   disabled={isSubmitting}
                 >
-                  {isSubmitting ? "Sending..." : "Send Message"}
+                  {isSubmitting ? t("contact.sending") : t("contact.send")}
                 </Button>
               </form>
             </motion.div>

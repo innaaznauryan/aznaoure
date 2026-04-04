@@ -1,9 +1,12 @@
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import { Button } from "@/components/ui/button";
 import aboutImage from "@/assets/about-craftsmanship.jpg";
 
 const About = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="min-h-screen">
       {/* Hero */}
@@ -14,9 +17,9 @@ const About = () => {
             animate={{ opacity: 1, y: 0 }}
             className="max-w-3xl mx-auto text-center"
           >
-            <p className="luxury-subheading mb-3 sm:mb-4">Our Story</p>
+            <p className="luxury-subheading mb-3 sm:mb-4">{t("about.subtitle")}</p>
             <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-4 sm:mb-6">
-              From Inspiration to Jewelry
+              {t("about.description")}
             </h1>
             <div className="luxury-divider mt-6 sm:mt-8" />
           </motion.div>
@@ -45,21 +48,21 @@ const About = () => {
               viewport={{ once: true }}
               className="space-y-6"
             >
-              <p className="luxury-subheading">Since 2025</p>
+              <p className="luxury-subheading">{t("about.since")}</p>
               <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl">
-                Crafting Dreams in Silver
+                {t("about.heading")}
               </h2>
               <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
-                At our studio, jewelry begins with an idea.
+                {t("about.paragraph1")}
               </p>
               <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
-                We are a creative jewelry concept brand dedicated to transforming inspiration into distinctive designs. Every piece starts as a story — a thought, a symbol, or a moment — which we translate into jewelry that feels meaningful and expressive.
+                {t("about.paragraph2")}
               </p>
               <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
-                Our work is guided by a passion for artistry, originality, and thoughtful design. From the first sketch to the final creation, each concept is developed with attention to detail and a deep respect for the beauty of craftsmanship.
+                {t("about.paragraph3")}
               </p>
               <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
-                We believe jewelry is more than decoration. It is a form of self-expression, a small work of art that carries emotion, identity, and imagination.
+                {t("about.paragraph4")}
               </p>
             </motion.div>
           </div>
@@ -76,28 +79,29 @@ const About = () => {
             className="text-center mb-8 sm:mb-12 lg:mb-16"
           >
             <p className="text-xs font-sans tracking-widest uppercase text-background/50 mb-3 sm:mb-4">
-              Our Philosophy
+              {t("about.philosophy")}
             </p>
             <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
-              Pillars of Excellence
+              {t("about.pillars")}
             </h2>
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8 sm:gap-10 lg:gap-12">
             {[
               {
-                title: "Artistry",
+                title: t("about.artistry.title"),
                 description:
-                  "Creativity is at the heart of everything we do. Each design begins with an idea and evolves through sketching, experimentation, and careful attention to detail until it becomes a piece of wearable art.",
+                  t("about.artistry.description")
               },
               {
-                title: "Integrity",
+                title: t("about.integrity.title"),
                 description:
-                  "We value honesty, quality, and respect for our craft. Every design is created thoughtfully, with attention to materials and a commitment to building trust with those who appreciate our work."              },
+                  t("about.integrity.description")
+              },
               {
-                title: "Innovation",
+                title: t("about.innovation.title"),
                 description:
-                  "We are inspired by both tradition and imagination. By exploring new ideas, forms, and concepts, we create jewelry that blends timeless elegance with a modern creative vision.",
+                  t("about.innovation.description")
               },
             ].map((value, index) => (
               <motion.div
@@ -130,13 +134,13 @@ const About = () => {
             className="max-w-2xl mx-auto text-center"
           >
             <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl mb-4 sm:mb-6">
-              Experience Aznaoure Art
+              {t("about.experience.title")}
             </h2>
             <p className="text-muted-foreground text-sm sm:text-base lg:text-lg mb-6 sm:mb-8 px-4">
-              Discover our creations and explore the ideas behind every design. Each piece is crafted to express individuality, creativity, and the beauty of thoughtful design.
+              {t("about.experience.description")}
             </p>
             <Button variant="luxury" size="lg" className="sm:size-xl w-full sm:w-auto" asChild>
-              <Link to="/contact">Contact Us</Link>
+              <Link to="/contact">{t("contact.title")}</Link>
             </Button>
           </motion.div>
         </div>

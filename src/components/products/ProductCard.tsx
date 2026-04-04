@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Product } from "@/lib/products";
+import { useTranslation } from "react-i18next";
+import { Product, categories } from "@/lib/products";
 import { formatPrice } from "@/lib/utils";
 
 interface ProductCardProps {
@@ -9,6 +10,8 @@ interface ProductCardProps {
 }
 
 export const ProductCard = ({ product, index = 0 }: ProductCardProps) => {
+  const { i18n } = useTranslation();
+
   return (
     <motion.article
       initial={{ opacity: 0, y: 20 }}
@@ -21,7 +24,7 @@ export const ProductCard = ({ product, index = 0 }: ProductCardProps) => {
         <div className="relative overflow-hidden bg-muted aspect-square mb-4">
           <img
             src={product.image}
-            alt={product.name}
+            alt={product.id}
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/5 transition-colors duration-300" />
@@ -30,11 +33,11 @@ export const ProductCard = ({ product, index = 0 }: ProductCardProps) => {
       
       <div className="space-y-2">
         <p className="text-xs font-sans tracking-widest uppercase text-muted-foreground">
-          {product.category}
+          {categories[product.category].name[i18n.language]}
         </p>
         <Link to={`/product/${product.id}`}>
           <h3 className="font-serif text-xl group-hover:text-primary transition-colors duration-300">
-            {product.name}
+            {product.name[i18n.language]}
           </h3>
         </Link>
         <div className="flex items-center justify-between pt-2">

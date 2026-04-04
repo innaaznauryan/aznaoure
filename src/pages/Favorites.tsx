@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import { ProductCard } from "@/components/products/ProductCard";
 import { useProducts } from "@/hooks/use-products.ts";
 
 const Favorites = () => {
+  const { t } = useTranslation();
   const { getFavoriteProducts } = useProducts();
   const favoriteProducts = getFavoriteProducts();
 
@@ -16,12 +18,12 @@ const Favorites = () => {
             animate={{opacity: 1, y: 0}}
             className="max-w-3xl mx-auto text-center"
           >
-            <p className="luxury-subheading mb-3 sm:mb-4">Your Treasured Picks</p>
+            <p className="luxury-subheading mb-3 sm:mb-4">{t("favorites.title")}</p>
             <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-4 sm:mb-6">
-              Favorites
+              {t("navigation.favorites")}
             </h1>
             <p className="text-muted-foreground text-sm sm:text-base lg:text-lg px-4">
-              A curated collection of the pieces you love most.
+              {t("favorites.description")}
             </p>
             <div className="luxury-divider mt-6 sm:mt-8"/>
           </motion.div>
@@ -40,7 +42,7 @@ const Favorites = () => {
           {favoriteProducts.length === 0 && (
             <div className="text-center py-12 sm:py-16">
               <p className="text-muted-foreground text-base sm:text-lg">
-                No products found in this category.
+                {t("products.noProducts")}
               </p>
             </div>
           )}

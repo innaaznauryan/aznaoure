@@ -3,12 +3,12 @@ import { useTranslation } from "react-i18next";
 import { ProductCard } from "@/components/products/ProductCard";
 import { PaginationControls } from "@/components/PaginationControls.tsx";
 import { useCategoryChange } from "@/hooks/use-category-change.tsx";
-import { categories } from "@/lib/products.ts";
+import { categories, Category } from "@/lib/products.ts";
 import { useProducts } from "@/hooks/use-products.ts";
 import { usePagination } from "@/hooks/use-pagination.tsx";
 
 const Collections = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { selectedCategory, handleCategoryChange } = useCategoryChange();
   const { products, getProductsByCategory } = useProducts();
 
@@ -40,8 +40,7 @@ const Collections = () => {
               {t("collections.title")}
             </h1>
             <p className="text-muted-foreground text-sm sm:text-base lg:text-lg px-4">
-              Explore our curated selection of exquisite jewelry, each piece
-              crafted to perfection.
+              {t("collections.description")}
             </p>
             <div className="luxury-divider mt-6 sm:mt-8" />
           </motion.div>
@@ -62,17 +61,17 @@ const Collections = () => {
             >
               All
             </button>
-            {categories.map((category) => (
+            {Object.entries(categories).map(([id, category]) => (
               <button
-                key={category.id}
-                onClick={() => handleCategoryChange(category.id)}
+                key={id}
+                onClick={() => handleCategoryChange(id as Category)}
                 className={`px-4 sm:px-6 py-2 text-xs sm:text-sm font-sans tracking-widest uppercase transition-all duration-300 ${
-                  selectedCategory === category.id
+                  selectedCategory === id
                     ? "bg-foreground text-background"
                     : "text-muted-foreground hover:text-foreground"
                 }`}
               >
-                {category.name}
+                {category.name[i18n.language]}
               </button>
             ))}
           </div>
@@ -91,7 +90,7 @@ const Collections = () => {
           {filteredProducts.length === 0 && (
             <div className="text-center py-12 sm:py-16">
               <p className="text-muted-foreground text-base sm:text-lg">
-                No products found in this category.
+                {t("products.noProducts")}
               </p>
             </div>
           )}
@@ -99,13 +98,15 @@ const Collections = () => {
       </section>
 
       {/* Pagination */}
-      <PaginationControls
-        currentPage={currentPage}
-        totalPages={totalPages}
-        goToPage={goToPage}
-        nextPage={nextPage}
-        prevPage={prevPage}
-      />
+      {filteredProducts.length > 0 && (
+        <PaginationControls
+          currentPage={currentPage}
+          totalPages={totalPages}
+          goToPage={goToPage}
+          nextPage={nextPage}
+          prevPage={prevPage}
+        />
+      )}
     </div>
   );
 };
