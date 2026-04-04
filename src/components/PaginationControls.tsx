@@ -34,6 +34,7 @@ export const PaginationControls = ({
           <PaginationItem key={i}>
             <PaginationLink
               isActive={currentPage === i + 1}
+              className={currentPage === i + 1 ? "pointer-events-none" : ""}
               onClick={() => goToPage(i + 1)}
             >
               {i + 1}
