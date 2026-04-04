@@ -19,7 +19,13 @@ export interface Product {
   favorite?: boolean;
 }
 
-export const categories = {
+export const categories: Record<
+  Category,
+  {
+    name: TranslatedString
+    description: TranslatedString
+  }
+> = {
   rings: {
     name: {
       en: "Rings",
@@ -47,7 +53,7 @@ export const categories = {
     },
     description: {
       en: "From subtle studs to statement pieces",
-      hy: ""
+      hy: "Նուրբ փուսեթներից մինչև աչքի ընկնող ինքնատիպ ականջօղեր"
     }
   },
   bracelets: {
@@ -57,7 +63,7 @@ export const categories = {
     },
     description: {
       en: "Wrist adornments of distinction",
-      hy: ""
+      hy: "Եվ նրբագեղ ապարանջաններ"
     }
   },
   brooches: {
@@ -67,7 +73,7 @@ export const categories = {
     },
     description: {
       en: "Elegant brooches to add a refined touch",
-      hy: ""
+      hy: "Շքեղ շեշտադրման համար"
     }
   },
 }
@@ -77,7 +83,7 @@ export const products: Product[] = [
     id: "three-apples-necklace",
     name: {
       en: "Three Apples Fell from the Sky Necklace",
-      hy: "Երկնքից ընկավ երեք խնձոր"
+      hy: "Երկնքից ընկավ երեք խնձոր` Կախազարդ"
     },
     price: 38000,
     category: "necklaces",
@@ -96,18 +102,18 @@ export const products: Product[] = [
     id: "five-pillars-dilijan-earrings",
     name: {
       en: "Five Pillars of Dilijan Earrings",
-      hy: ""
+      hy: "Դիլիջանի հինգ սյուները՝ Ականջօղեր"
     },
     price: 30000,
     category: "earrings",
     image: images["product-earrings-dilijan.jpg"],
     description: {
       en: "Inspired by Armenian post-modernism and Five Pillars of Dilijan Monument",
-      hy: ""
+      hy: "Ոգեշնչված է հայկական պոստմոդեռնիզմից և Դիլիջանի «Հինգ սյուներ» հայտնի հուշարձանից։"
     },
     details: [
-      {en: "925 Sterling Silver", hy: "Արծաթ՝ 925 հարգի"},
-      {en: "16 g", hy: "16 գ"}
+      { en: "925 Sterling Silver", hy: "Արծաթ՝ 925 հարգի" },
+      { en: "16 g", hy: "16 գ" }
     ],
     featured: true,
   },
@@ -115,18 +121,18 @@ export const products: Product[] = [
     id: "fountains-gyumri-earrings",
     name: {
       en: "Fountains of Gyumri Studs and Mono Earring",
-      hy: ""
+      hy: "Գյումրու շատրվաններ՝ Փուսեթներ և մոնո ականջօղ"
     },
     price: 46000,
     category: "earrings",
     image: images["product-earrings-gyumri.jpg"],
     description: {
       en: "Inspired by Armenian post-modernism and famous Fountains of Gyumri",
-      hy: ""
+      hy: "Ոգեշնչված է հայկական պոստմոդեռնիզմից և Գյումրու հայտնի շատրվաններից։"
     },
     details: [
-      {en: "925 Sterling Silver", hy: ""},
-      {en: "12 g", hy: ""}
+      { en: "925 Sterling Silver", hy: "Արծաթ՝ 925 հարգի" },
+      { en: "12 g", hy: "12 գ" }
     ],
     featured: true,
   },
@@ -134,18 +140,18 @@ export const products: Product[] = [
     id: "melancholy-necklace",
     name: {
       en: "Melancholy Necklace",
-      hy: ""
+      hy: "Մելանխոլիա՝ Կախազարդ"
     },
     price: 36000,
     category: "necklaces",
     image: images["product-necklace-melancholy.jpg"],
     description: {
       en: "Inspired by Albrecht Dürer’s artwork Melencolia I, with a magic square where all sums are equal - a perfect balance of art and logic.",
-      hy: ""
+      hy: "Ոգեշնչված է Ալբրեխտ Դյուրերի «Melencolia I» ստեղծագործությունից՝ մոգական քառակուսիով, որտեղ բոլոր ուղղություններով թվերի գումարները հավասար են իրար։ Արվեստի և տրամաբանության կատարյալ հավասարակշռություն։"
     },
     details: [
-      {en: "925 Sterling Silver", hy: ""},
-      {en: "9 g", hy: ""}
+      { en: "925 Sterling Silver", hy: "Արծաթ՝ 925 հարգի" },
+      { en: "9 գ", hy: "9 գ" }
     ],
     featured: true,
     favorite: true,
@@ -154,18 +160,18 @@ export const products: Product[] = [
     id: "manuscripts-ring",
     name: {
       en: "Manuscripts don't burn Ring",
-      hy: ""
+      hy: "Ձեռագրերը չեն այրվում՝ Մատանի"
     },
     price: 26000,
     category: "rings",
     image: images["product-ring-manuscripts.jpg"],
     description: {
       en: "Inspired by Mikhail Bulgakov’s timeless words: ‘Manuscripts don’t burn’. It reminds us that even if words are erased or pages disappear, the meaning behind them continues to live.",
-      hy: ""
+      hy: "Ոգեշնչված է Միխայիլ Բուլգակովի անմահ խոսքերից՝ «Ձեռագրերը չեն այրվում»։ Այն հիշեցնում է, որ նույնիսկ եթե բառերը ջնջվեն կամ էջերն անհետանան, նրանց ասելիքն անմահ է։"
     },
     details: [
-      {en: "925 Sterling Silver", hy: ""},
-      {en: "5.5 g", hy: ""}
+      { en: "925 Sterling Silver", hy: "Արծաթ՝ 925 հարգի" },
+      { en: "5.5 g", hy: "5.5 գ" }
     ],
     favorite: true,
   },
@@ -173,72 +179,72 @@ export const products: Product[] = [
     id: "manuscripts-bracelet",
     name: {
       en: "Manuscripts don't burn Bracelet",
-      hy: ""
+      hy: "Ձեռագրերը չեն այրվում՝ Թևնոց"
     },
     price: 17000,
     category: "bracelets",
     image: images["product-bracelet-manuscripts.jpg"],
     description: {
       en: "Inspired by Mikhail Bulgakov’s timeless words: ‘Manuscripts don’t burn’. It reminds us that even if words are erased or pages disappear, the meaning behind them continues to live.",
-      hy: ""
+      hy: "Ոգեշնչված է Միխայիլ Բուլգակովի անմահ խոսքերից՝ «Ձեռագրերը չեն այրվում»։ Այն հիշեցնում է, որ նույնիսկ եթե բառերը ջնջվեն կամ էջերն անհետանան, նրանց ասելիքն անմահ է։"
     },
     details: [
-      {en: "925 Sterling Silver", hy: ""},
-      {en: "4.5 g", hy: ""}
+      { en: "925 Sterling Silver", hy: "Արծաթ՝ 925 հարգի" },
+      { en: "4.5 g", hy: "4.5 գ" }
     ],
   },
   {
     id: "manuscripts-brooch",
     name: {
       en: "Manuscripts don't burn Brooch",
-      hy: ""
+      hy: "Ձեռագրերը չեն այրվում՝ Կրծքազարդ"
     },
     price: 28000,
     category: "brooches",
     image: images["product-brooch-manuscripts.jpg"],
     description: {
       en: "Inspired by Mikhail Bulgakov’s timeless words: ‘Manuscripts don’t burn’. It reminds us that even if words are erased or pages disappear, the meaning behind them continues to live.",
-      hy: ""
+      hy: "Ոգեշնչված է Միխայիլ Բուլգակովի անմահ խոսքերից՝ «Ձեռագրերը չեն այրվում»։ Այն հիշեցնում է, որ նույնիսկ եթե բառերը ջնջվեն կամ էջերն անհետանան, նրանց ասելիքն անմահ է։"
     },
     details: [
-      {en: "925 Sterling Silver", hy: ""},
-      {en: "5 g", hy: ""}
+      { en: "925 Sterling Silver", hy: "Արծաթ՝ 925 հարգի" },
+      { en: "5 g", hy: "5 գ" }
     ],
   },
   {
     id: "manuscripts-earrings",
     name: {
       en: "Manuscripts don't burn Earrings",
-      hy: ""
+      hy: "Ձեռագրերը չեն այրվում՝ Ականջօղեր"
     },
     price: 19000,
     category: "earrings",
     image: images["product-earrings-manuscripts.jpg"],
     description: {
       en: "Inspired by Mikhail Bulgakov’s timeless words: ‘Manuscripts don’t burn’. It reminds us that even if words are erased or pages disappear, the meaning behind them continues to live.",
-      hy: ""
+      hy: "Ոգեշնչված է Միխայիլ Բուլգակովի անմահ խոսքերից՝ «Ձեռագրերը չեն այրվում»։ Այն հիշեցնում է, որ նույնիսկ եթե բառերը ջնջվեն կամ էջերն անհետանան, նրանց ասելիքն անմահ է։"
     },
     details: [
-      {en: "925 Sterling Silver", hy: ""},
-      {en: "5.6 g", hy: ""}
+      { en: "925 Sterling Silver", hy: "Արծաթ՝ 925 հարգի" },
+      { en: "5.6 g", hy: "5.6 գ" }
     ],
   },
   {
     id: "manuscripts-necklace",
     name: {
       en: "Manuscripts don't burn Necklace",
-      hy: ""
+      hy: "Ձեռագրերը չեն այրվում՝ Կախազարդ"
     },
     price: 28000,
     category: "necklaces",
     image: images["product-necklace-manuscripts.jpg"],
     description: {
       en: "Inspired by Mikhail Bulgakov’s timeless words: ‘Manuscripts don’t burn’. It reminds us that even if words are erased or pages disappear, the meaning behind them continues to live.",
-      hy: ""
+      hy: "Ոգեշնչված է Միխայիլ Բուլգակովի անմահ խոսքերից՝ «Ձեռագրերը չեն այրվում»։ Այն հիշեցնում է, որ նույնիսկ եթե բառերը ջնջվեն կամ էջերն անհետանան, նրանց ասելիքն անմահ է։"
     },
     details: [
-      {en: "925 Sterling Silver", hy: ""},
-      {en: "6 g", hy: ""}
+      { en: "925 Sterling Silver", hy: "Արծաթ՝ 925 հարգի" },
+      { en: "6 g", hy: "6 գ" }
     ],
   },
 ];

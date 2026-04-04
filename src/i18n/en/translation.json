@@ -1,6 +1,126 @@
 {
+  "navigation": {
+    "home": "Home",
+    "collections": "Collections",
+    "favorites": "Favorites",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "home": {
+    "title1": "Timeless",
+    "title2": "Elegance",
+    "subtitle": "The New Collection",
+    "description": "Discover our exquisite collection of handcrafted jewelry, where every piece tells a story of exceptional artistry and enduring beauty.",
+    "exploreCollections": "Explore Collection",
+    "story": "Our Story",
+    "explore": "Explore",
+    "selection": "Curated Selection",
+    "featured": "Featured Pieces",
+    "view": "View All Collections",
+    "quality": {
+      "title": "Exceptional Quality",
+      "description": "Each piece is crafted with the finest materials and meticulous attention to detail."
+    },
+    "warranty": {
+      "title": "Lifetime Warranty",
+      "description": "Every Aznaoure Art creation is backed by our commitment to lasting excellence."
+    },
+    "shipping": {
+      "title": "Complimentary Shipping",
+      "description": "Complimentary shipping in Armenia, with carefully arranged worldwide delivery, all in elegant packaging."
+    },
+    "clients": "What Our Clients Say",
+    "quote": "\"A friend of mine admired my jewelry so much that I can't wait to gift her the same piece.\"",
+    "client": "Zhanna H.",
+    "city": "Yerevan"
+  },
   "collections": {
     "title": "Our Collections",
-    "subtitle": "Discover"
+    "subtitle": "Discover",
+    "description": "Explore our curated selection of exquisite jewelry, each piece crafted to perfection."
+  },
+  "favorites": {
+    "title": "Your Treasured Picks",
+    "description": "A curated collection of the pieces you love most."
+  },
+  "about": {
+    "title": "About Us",
+    "subtitle": "Our Story",
+    "description": "From Inspiration to Jewelry",
+    "since": "Since 2025",
+    "heading": "Crafting Dreams in Silver",
+    "paragraph1": "At our studio, jewelry begins with an idea.",
+    "paragraph2": "We are a creative jewelry concept brand dedicated to transforming inspiration into distinctive designs. Every piece starts as a story — a thought, a symbol, or a moment — which we translate into jewelry that feels meaningful and expressive.",
+    "paragraph3": "Our work is guided by a passion for artistry, originality, and thoughtful design. From the first sketch to the final creation, each concept is developed with attention to detail and a deep respect for the beauty of craftsmanship.",
+    "paragraph4": "We believe jewelry is more than decoration. It is a form of self-expression, a small work of art that carries emotion, identity, and imagination.",
+    "philosophy": "Our Philosophy",
+    "pillars": "Pillars of Excellence",
+    "artistry": {
+      "title": "Artistry",
+      "description": "Creativity is at the heart of everything we do. Each design begins with an idea and evolves through sketching, experimentation, and careful attention to detail until it becomes a piece of wearable art."
+    },
+    "integrity": {
+      "title": "Integrity",
+      "description": "We value honesty, quality, and respect for our craft. Every design is created thoughtfully, with attention to materials and a commitment to building trust with those who appreciate our work."
+    },
+    "innovation": {
+      "title": "Innovation",
+      "description": "We are inspired by both tradition and imagination. By exploring new ideas, forms, and concepts, we create jewelry that blends timeless elegance with a modern creative vision."
+    },
+    "experience": {
+      "title": "Experience Aznaoure Art",
+      "description": "Discover our creations and explore the ideas behind every design. Each piece is crafted to express individuality, creativity, and the beauty of thoughtful design."
+    }
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Get in touch",
+    "description": "Our concierge team is here to assist you with any inquiries.",
+    "visit": "Visit Us",
+    "sendMessage": "Send Us a Message",
+    "fName": {
+      "label": "First Name",
+      "placeholder": "Your first name"
+    },
+    "lName": {
+      "label": "Last Name",
+      "placeholder": "Your last name"
+    },
+    "phone": "Phone",
+    "email": {
+      "label": "Email",
+      "placeholder": "your@email.com"
+    },
+    "message": {
+      "label": "Message",
+      "placeholder": "Tell us more about your inquiry..."
+    },
+    "sending": "Sending...",
+    "send": "Send Message",
+    "success": {
+      "title": "Message Sent",
+      "description": "Thank you for reaching out. Our team will respond within 24 hours."
+    },
+    "error": {
+      "title": "Error",
+      "description": "There was an error sending your message. Please try again."
+    }
+  },
+  "footer": {
+    "description": "Crafting timeless elegance since 2025. Each piece tells a story of exceptional artistry and enduring beauty.",
+    "company": "Brand",
+    "copyright": "Aznaoure Art. All rights reserved."
+  },
+  "products": {
+    "noProducts": "No products found in this category.",
+    "notFound": "Product Not Found",
+    "back": "Back to Collections",
+    "details": "Details",
+    "alsoLike": "You May Also Like",
+    "related": "Related Pieces"
+  },
+  "404": {
+    "notFound": "Oops! Page not found",
+    "back": "Return to Home"
   }
 }
