@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import logo from "@/assets/logo-bronze.png";
 import { motion, AnimatePresence } from "framer-motion";
+import logo from "@/assets/logo-bronze.png";
+import LanguageSwitcher from "@/components/LanguageSwitcher.tsx";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -59,6 +60,8 @@ export const Header = () => {
               </Link>
             ))}
           </nav>
+
+          <LanguageSwitcher/>
         </div>
       </div>
 

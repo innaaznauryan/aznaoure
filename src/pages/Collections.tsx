@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import { ProductCard } from "@/components/products/ProductCard";
 import { PaginationControls } from "@/components/PaginationControls.tsx";
 import { useCategoryChange } from "@/hooks/use-category-change.tsx";
@@ -7,6 +8,7 @@ import { useProducts } from "@/hooks/use-products.ts";
 import { usePagination } from "@/hooks/use-pagination.tsx";
 
 const Collections = () => {
+  const { t } = useTranslation();
   const { selectedCategory, handleCategoryChange } = useCategoryChange();
   const { products, getProductsByCategory } = useProducts();
 
@@ -33,9 +35,9 @@ const Collections = () => {
             animate={{ opacity: 1, y: 0 }}
             className="max-w-3xl mx-auto text-center"
           >
-            <p className="luxury-subheading mb-3 sm:mb-4">Discover</p>
+            <p className="luxury-subheading mb-3 sm:mb-4">{t("collections.subtitle")}</p>
             <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-4 sm:mb-6">
-              Our Collections
+              {t("collections.title")}
             </h1>
             <p className="text-muted-foreground text-sm sm:text-base lg:text-lg px-4">
               Explore our curated selection of exquisite jewelry, each piece
