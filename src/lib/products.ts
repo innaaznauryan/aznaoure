@@ -2,139 +2,243 @@ import images from "./product-images";
 
 export type Category = "rings" | "necklaces" | "earrings" | "bracelets" | "brooches";
 
+type TranslatedString = {
+  en: string
+  hy: string
+}
+
 export interface Product {
   id: string;
-  name: string;
+  name: TranslatedString;
   price: number;
   category: Category;
   image: string;
-  description: string;
-  details: string[];
+  description: TranslatedString;
+  details: TranslatedString[];
   featured?: boolean;
   favorite?: boolean;
 }
 
-export const categories: { id: Category; name: string; description: string }[] = [
-  { id: "rings", name: "Rings", description: "Timeless elegance for every occasion" },
-  { id: "necklaces", name: "Necklaces", description: "Graceful pendants and chains" },
-  { id: "earrings", name: "Earrings", description: "From subtle studs to statement pieces" },
-  { id: "bracelets", name: "Bracelets", description: "Wrist adornments of distinction" },
-  { id: "brooches", name: "Brooches", description: "Elegant brooches to add a refined touch" },
-];
+export const categories = {
+  rings: {
+    name: {
+      en: "Rings",
+      hy: "Մատանիներ"
+    },
+    description: {
+      en: "Timeless elegance for every occasion",
+      hy: "Ժամանակից դուրս նրբագեղություն"
+    }
+  },
+  necklaces: {
+    name: {
+      en: "Necklaces",
+      hy: "Կախազարդեր"
+    },
+    description: {
+      en: "Graceful pendants and chains",
+      hy: "Նրբաճաշակ կախազարդեր և շղթաներ"
+    }
+  },
+  earrings: {
+    name: {
+      en: "Earrings",
+      hy: "Ականջօղեր"
+    },
+    description: {
+      en: "From subtle studs to statement pieces",
+      hy: ""
+    }
+  },
+  bracelets: {
+    name: {
+      en: "Bracelets",
+      hy: "Թևնոցներ"
+    },
+    description: {
+      en: "Wrist adornments of distinction",
+      hy: ""
+    }
+  },
+  brooches: {
+    name: {
+      en: "Brooches",
+      hy: "Կրծքազարդեր"
+    },
+    description: {
+      en: "Elegant brooches to add a refined touch",
+      hy: ""
+    }
+  },
+}
 
 export const products: Product[] = [
   {
     id: "three-apples-necklace",
-    name: "Three Apples Fell from the Sky Necklace",
+    name: {
+      en: "Three Apples Fell from the Sky Necklace",
+      hy: "Երկնքից ընկավ երեք խնձոր"
+    },
     price: 38000,
     category: "necklaces",
     image: images["product-necklace-3apples.jpg"],
-    description: "Inspired by Armenian fairy-tales. And three apples fell from the sky: one for the teller, one for the listener, and one for the one who understands the meaning.",
+    description: {
+      en: "Inspired by Armenian fairy-tales. And three apples fell from the sky: one for the teller, one for the listener, and one for the one who understands the meaning.",
+      hy: "Ոգեշնչված է հայկական հեքիաթներից։ Երկնքից ընկավ երեք խնձոր․ մեկը՝ ասողին, մեկը՝ լսողին, մեկն էլ՝ ականջ դնողին։"
+    },
     details: [
-      "925 Sterling Silver",
-      "16 g",
+      {en: "925 Sterling Silver", hy: "Արծաթ՝ 925 հարգի"},
+      {en: "16 g", hy: "16 գ"}
     ],
     featured: true,
   },
   {
     id: "five-pillars-dilijan-earrings",
-    name: "Five Pillars of Dilijan Earrings",
+    name: {
+      en: "Five Pillars of Dilijan Earrings",
+      hy: ""
+    },
     price: 30000,
     category: "earrings",
     image: images["product-earrings-dilijan.jpg"],
-    description: "Inspired by Armenian post-modernism and Five Pillars of Dilijan Monument",
+    description: {
+      en: "Inspired by Armenian post-modernism and Five Pillars of Dilijan Monument",
+      hy: ""
+    },
     details: [
-      "925 Sterling Silver",
-      "8.5 g",
+      {en: "925 Sterling Silver", hy: "Արծաթ՝ 925 հարգի"},
+      {en: "16 g", hy: "16 գ"}
     ],
     featured: true,
   },
   {
     id: "fountains-gyumri-earrings",
-    name: "Fountains of Gyumri Studs and Mono Earring",
+    name: {
+      en: "Fountains of Gyumri Studs and Mono Earring",
+      hy: ""
+    },
     price: 46000,
     category: "earrings",
     image: images["product-earrings-gyumri.jpg"],
-    description: "Inspired by Armenian post-modernism and famous Fountains of Gyumri",
+    description: {
+      en: "Inspired by Armenian post-modernism and famous Fountains of Gyumri",
+      hy: ""
+    },
     details: [
-      "925 Sterling Silver",
-      "12 g",
+      {en: "925 Sterling Silver", hy: ""},
+      {en: "12 g", hy: ""}
     ],
     featured: true,
   },
   {
     id: "melancholy-necklace",
-    name: "Melancholy Necklace",
+    name: {
+      en: "Melancholy Necklace",
+      hy: ""
+    },
     price: 36000,
     category: "necklaces",
     image: images["product-necklace-melancholy.jpg"],
-    description: "Inspired by Albrecht Dürer’s artwork Melencolia I, with a magic square where all sums are equal - a perfect balance of art and logic.",
+    description: {
+      en: "Inspired by Albrecht Dürer’s artwork Melencolia I, with a magic square where all sums are equal - a perfect balance of art and logic.",
+      hy: ""
+    },
     details: [
-      "925 Sterling Silver",
-      "9 g",
+      {en: "925 Sterling Silver", hy: ""},
+      {en: "9 g", hy: ""}
     ],
     featured: true,
     favorite: true,
   },
   {
     id: "manuscripts-ring",
-    name: "Manuscripts don't burn Ring",
+    name: {
+      en: "Manuscripts don't burn Ring",
+      hy: ""
+    },
     price: 26000,
     category: "rings",
     image: images["product-ring-manuscripts.jpg"],
-    description: "Inspired by Mikhail Bulgakov’s timeless words: ‘Manuscripts don’t burn’. It reminds us that even if words are erased or pages disappear, the meaning behind them continues to live.",
+    description: {
+      en: "Inspired by Mikhail Bulgakov’s timeless words: ‘Manuscripts don’t burn’. It reminds us that even if words are erased or pages disappear, the meaning behind them continues to live.",
+      hy: ""
+    },
     details: [
-      "925 Sterling Silver",
-      "5.5 g",
+      {en: "925 Sterling Silver", hy: ""},
+      {en: "5.5 g", hy: ""}
     ],
     favorite: true,
   },
   {
     id: "manuscripts-bracelet",
-    name: "Manuscripts don't burn Bracelet",
+    name: {
+      en: "Manuscripts don't burn Bracelet",
+      hy: ""
+    },
     price: 17000,
     category: "bracelets",
     image: images["product-bracelet-manuscripts.jpg"],
-    description: "Inspired by Mikhail Bulgakov’s timeless words: ‘Manuscripts don’t burn’. It reminds us that even if words are erased or pages disappear, the meaning behind them continues to live.",
+    description: {
+      en: "Inspired by Mikhail Bulgakov’s timeless words: ‘Manuscripts don’t burn’. It reminds us that even if words are erased or pages disappear, the meaning behind them continues to live.",
+      hy: ""
+    },
     details: [
-      "925 Sterling Silver",
-      "4.5 g",
+      {en: "925 Sterling Silver", hy: ""},
+      {en: "4.5 g", hy: ""}
     ],
   },
   {
     id: "manuscripts-brooch",
-    name: "Manuscripts don't burn Brooch",
+    name: {
+      en: "Manuscripts don't burn Brooch",
+      hy: ""
+    },
     price: 28000,
     category: "brooches",
     image: images["product-brooch-manuscripts.jpg"],
-    description: "Inspired by Mikhail Bulgakov’s timeless words: ‘Manuscripts don’t burn’. It reminds us that even if words are erased or pages disappear, the meaning behind them continues to live.",
+    description: {
+      en: "Inspired by Mikhail Bulgakov’s timeless words: ‘Manuscripts don’t burn’. It reminds us that even if words are erased or pages disappear, the meaning behind them continues to live.",
+      hy: ""
+    },
     details: [
-      "925 Sterling Silver",
-      "5 g",
+      {en: "925 Sterling Silver", hy: ""},
+      {en: "5 g", hy: ""}
     ],
   },
   {
     id: "manuscripts-earrings",
-    name: "Manuscripts don't burn Earrings",
+    name: {
+      en: "Manuscripts don't burn Earrings",
+      hy: ""
+    },
     price: 19000,
     category: "earrings",
     image: images["product-earrings-manuscripts.jpg"],
-    description: "Inspired by Mikhail Bulgakov’s timeless words: ‘Manuscripts don’t burn’. It reminds us that even if words are erased or pages disappear, the meaning behind them continues to live.",
+    description: {
+      en: "Inspired by Mikhail Bulgakov’s timeless words: ‘Manuscripts don’t burn’. It reminds us that even if words are erased or pages disappear, the meaning behind them continues to live.",
+      hy: ""
+    },
     details: [
-      "925 Sterling Silver",
-      "5.6 g",
+      {en: "925 Sterling Silver", hy: ""},
+      {en: "5.6 g", hy: ""}
     ],
   },
   {
     id: "manuscripts-necklace",
-    name: "Manuscripts don't burn Necklace",
+    name: {
+      en: "Manuscripts don't burn Necklace",
+      hy: ""
+    },
     price: 28000,
     category: "necklaces",
     image: images["product-necklace-manuscripts.jpg"],
-    description: "Inspired by Mikhail Bulgakov’s timeless words: ‘Manuscripts don’t burn’. It reminds us that even if words are erased or pages disappear, the meaning behind them continues to live.",
+    description: {
+      en: "Inspired by Mikhail Bulgakov’s timeless words: ‘Manuscripts don’t burn’. It reminds us that even if words are erased or pages disappear, the meaning behind them continues to live.",
+      hy: ""
+    },
     details: [
-      "925 Sterling Silver",
-      "6 g",
+      {en: "925 Sterling Silver", hy: ""},
+      {en: "6 g", hy: ""}
     ],
   },
 ];
