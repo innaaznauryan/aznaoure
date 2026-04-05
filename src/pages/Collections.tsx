@@ -59,7 +59,7 @@ const Collections = () => {
                   : "text-muted-foreground hover:text-foreground"
               }`}
             >
-              All
+              {t("collections.all")}
             </button>
             {Object.entries(categories).map(([id, category]) => (
               <button

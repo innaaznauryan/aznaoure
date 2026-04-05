@@ -26,8 +26,8 @@
       "description": "Every Aznaoure Art creation is backed by our commitment to lasting excellence."
     },
     "shipping": {
-      "title": "Complimentary Shipping",
-      "description": "Complimentary shipping in Armenia, with carefully arranged worldwide delivery, all in elegant packaging."
+      "title": "Complimentary Delivery",
+      "description": "Complimentary delivery across Armenia for orders above 25.000 AMD. Carefully arranged worldwide delivery, all in elegant packaging."
     },
     "clients": "What Our Clients Say",
     "quote": "\"A friend of mine admired my jewelry so much that I can't wait to gift her the same piece.\"",
@@ -37,7 +37,8 @@
   "collections": {
     "title": "Our Collections",
     "subtitle": "Discover",
-    "description": "Explore our curated selection of exquisite jewelry, each piece crafted to perfection."
+    "description": "Explore our curated selection of exquisite jewelry, each piece crafted to perfection.",
+    "all": "All"
   },
   "favorites": {
     "title": "Your Treasured Picks",
