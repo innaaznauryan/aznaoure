@@ -19,8 +19,9 @@ export default {
     },
     extend: {
       fontFamily: {
-        serif: ["Playfair Display", "Georgia", "serif"],
-        sans: ["Inter", "system-ui", "sans-serif"],
+        serif: ["'Noto Serif Armenian'", "Georgia", "serif"],
+        sans: ["'Noto Sans Armenian'", "system-ui", "sans-serif"],
+        base: ["'Noto Serif Armenian'", "Georgia", "serif"],
       },
       colors: {
         border: "hsl(var(--border))",
