@@ -1,6 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowLeft, Heart } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { ProductCard } from "@/components/products/ProductCard";
@@ -11,7 +11,7 @@ import { formatPrice } from "@/lib/utils";
 const ProductDetail = () => {
   const { id } = useParams<{ id: string }>();
   const { t, i18n } = useTranslation();
-  const { getProductById, getFeaturedProducts, toggleFavorite } = useProducts();
+  const { getProductById, getFeaturedProducts } = useProducts();
 
   const product = getProductById(id);
   const relatedProducts = getFeaturedProducts()
@@ -104,16 +104,16 @@ const ProductDetail = () => {
                 </ul>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-auto">
-                <Button
-                  variant="luxuryOutline"
-                  size="lg"
-                  className="sm:size-xl sm:flex-shrink-0"
-                  onClick={() => toggleFavorite(id)}
-                >
-                  <Heart className={`h-4 w-4 sm:h-5 sm:w-5 ${product.favorite ? 'fill-gold' : ''}`} />
-                </Button>
-              </div>
+              {/*<div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-auto">*/}
+              {/*  <Button*/}
+              {/*    variant="luxuryOutline"*/}
+              {/*    size="lg"*/}
+              {/*    className="sm:size-xl sm:flex-shrink-0"*/}
+              {/*    onClick={() => toggleFavorite(id)}*/}
+              {/*  >*/}
+              {/*    <Heart className={`h-4 w-4 sm:h-5 sm:w-5 ${product.favorite ? 'fill-gold' : ''}`} />*/}
+              {/*  </Button>*/}
+              {/*</div>*/}
             </motion.div>
           </div>
         </div>
