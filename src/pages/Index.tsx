@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { ProductCard } from "@/components/products/ProductCard";
 import { categories } from "@/lib/products.ts";
 import { useProducts } from "@/hooks/use-products.ts";
-import heroImage from "@/assets/hero-jewelry.jpg";
+import heroImage from "@/assets/hero-jewelry.webp";
 import { ArrowRight, Diamond, Shield, Truck } from "lucide-react";
 
 const Index = () => {

@@ -1,5 +1,5 @@
 const images = import.meta.glob(
-  "../assets/*.jpg",
+  "../assets/*.webp",
   { eager: true, import: "default" }
 );
 

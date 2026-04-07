@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Facebook, Instagram } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { categories } from "@/lib/products";
-import logo from "@/assets/logo-silver.png";
+import logo from "@/assets/logo-silver.webp";
 
 export const Footer = () => {
   const { t, i18n } = useTranslation();

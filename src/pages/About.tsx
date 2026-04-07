@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
-import aboutImage from "@/assets/about-craftsmanship.jpg";
+import aboutImage from "@/assets/about-craftsmanship.webp";
 
 const About = () => {
   const { t } = useTranslation();
