@@ -1,19 +1,6 @@
-import { useState, useEffect } from "react";
-import { Category, Product, products as defaultProducts } from "@/lib/products.ts";
+import { Category, products } from "@/lib/products.ts";
 
 export const useProducts = () => {
-  const [products, setProducts] = useState<Product[]>([]);
-
-  useEffect(() => {
-    const stored = localStorage.getItem("products");
-
-    if (stored) {
-      setProducts(JSON.parse(stored));
-    } else {
-      localStorage.setItem("products", JSON.stringify(defaultProducts));
-      setProducts(defaultProducts);
-    }
-  }, []);
 
   const getProductsByCategory = (category: Category) => {
     return products.filter((p) => p.category === category);
@@ -32,17 +19,11 @@ export const useProducts = () => {
   };
 
   const toggleFavorite = (id: string) => {
-    const updatedProducts = products.map((product) =>
-      product.id === id ? { ...product, favorite: !product.favorite } : product
-    );
-
-    setProducts(updatedProducts);
-    localStorage.setItem("products", JSON.stringify(updatedProducts));
+    // TODO: toggleFavorite logic
   };
 
   return {
     products,
-    setProducts,
     getProductsByCategory,
     getFeaturedProducts,
     getFavoriteProducts,
