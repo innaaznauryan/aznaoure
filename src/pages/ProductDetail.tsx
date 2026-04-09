@@ -4,6 +4,7 @@ import { ArrowLeft } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { ProductCard } from "@/components/products/ProductCard";
+import { ProductImageViewer } from "@/components/products/ProductImageViewer";
 import { useProducts } from "@/hooks/use-products.ts";
 import { categories } from "@/lib/products.ts";
 import { formatPrice } from "@/lib/utils";
@@ -56,14 +57,7 @@ const ProductDetail = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <div className="aspect-square bg-muted overflow-hidden">
-                <img
-                  src={product.image}
-                  alt={product.id}
-                  loading="lazy"
-                  className="w-full h-full object-cover"
-                />
-              </div>
+              <ProductImageViewer image={product.image} id={product.id} />
             </motion.div>
 
             {/* Details */}
