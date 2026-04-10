@@ -85,7 +85,7 @@ export const products: Product[] = [
       en: "Three Apples Fell from the Sky Necklace",
       hy: "Երկնքից ընկավ երեք խնձոր` Կախազարդ"
     },
-    price: 38000,
+    price: 42000,
     category: "necklaces",
     image: images["product-necklace-3apples.webp"],
     description: {
@@ -94,7 +94,7 @@ export const products: Product[] = [
     },
     details: [
       {en: "925 Sterling Silver", hy: "Արծաթ՝ 925 հարգի"},
-      {en: "16 g", hy: "16 գ"}
+      {en: "16.5 g", hy: "16.5 գ"}
     ],
     featured: true,
   },
@@ -113,7 +113,7 @@ export const products: Product[] = [
     },
     details: [
       { en: "925 Sterling Silver", hy: "Արծաթ՝ 925 հարգի" },
-      { en: "16 g", hy: "16 գ" }
+      { en: "9 g", hy: "9 գ" }
     ],
     featured: true,
   },
@@ -142,7 +142,7 @@ export const products: Product[] = [
       en: "Melancholy Necklace",
       hy: "Մելանխոլիա՝ Կախազարդ"
     },
-    price: 36000,
+    price: 42000,
     category: "necklaces",
     image: images["product-necklace-melancholy.webp"],
     description: {
@@ -151,7 +151,7 @@ export const products: Product[] = [
     },
     details: [
       { en: "925 Sterling Silver", hy: "Արծաթ՝ 925 հարգի" },
-      { en: "9 գ", hy: "9 գ" }
+      { en: "27 գ", hy: "27 գ" }
     ],
     featured: true,
     favorite: true,
@@ -162,7 +162,7 @@ export const products: Product[] = [
       en: "Manuscripts don't burn Ring",
       hy: "Ձեռագրերը չեն այրվում՝ Մատանի"
     },
-    price: 26000,
+    price: 25000,
     category: "rings",
     image: images["product-ring-manuscripts.webp"],
     description: {
@@ -208,14 +208,14 @@ export const products: Product[] = [
     },
     details: [
       { en: "925 Sterling Silver", hy: "Արծաթ՝ 925 հարգի" },
-      { en: "5 g", hy: "5 գ" }
+      { en: "5.4 g", hy: "5.4 գ" }
     ],
   },
   {
-    id: "manuscripts-earrings",
+    id: "manuscripts-earrings-small",
     name: {
-      en: "Manuscripts don't burn Earrings",
-      hy: "Ձեռագրերը չեն այրվում՝ Ականջօղեր"
+      en: "Manuscripts don't burn Earrings Small",
+      hy: "Ձեռագրերը չեն այրվում՝ Ականջօղեր Փոքր"
     },
     price: 19000,
     category: "earrings",
@@ -226,14 +226,14 @@ export const products: Product[] = [
     },
     details: [
       { en: "925 Sterling Silver", hy: "Արծաթ՝ 925 հարգի" },
-      { en: "5.6 g", hy: "5.6 գ" }
+      { en: "5.5 g", hy: "5.5 գ" }
     ],
   },
   {
-    id: "manuscripts-necklace",
+    id: "manuscripts-necklace-big",
     name: {
-      en: "Manuscripts don't burn Necklace",
-      hy: "Ձեռագրերը չեն այրվում՝ Կախազարդ"
+      en: "Manuscripts don't burn Necklace Big",
+      hy: "Ձեռագրերը չեն այրվում՝ Կախազարդ Մեծ"
     },
     price: 28000,
     category: "necklaces",
@@ -244,7 +244,25 @@ export const products: Product[] = [
     },
     details: [
       { en: "925 Sterling Silver", hy: "Արծաթ՝ 925 հարգի" },
-      { en: "6 g", hy: "6 գ" }
+      { en: "5.8 g", hy: "5.8 գ" }
+    ],
+  },
+  {
+    id: "manuscripts-necklace-small",
+    name: {
+      en: "Manuscripts don't burn Necklace Small",
+      hy: "Ձեռագրերը չեն այրվում՝ Կախազարդ Փոքր"
+    },
+    price: 14000,
+    category: "necklaces",
+    image: images["product-necklace-manuscripts-small.webp"],
+    description: {
+      en: "Inspired by Mikhail Bulgakov’s timeless words: ‘Manuscripts don’t burn’. It reminds us that even if words are erased or pages disappear, the meaning behind them continues to live.",
+      hy: "Ոգեշնչված է Միխայիլ Բուլգակովի անմահ խոսքերից՝ «Ձեռագրերը չեն այրվում»։ Այն հիշեցնում է, որ նույնիսկ եթե բառերը ջնջվեն կամ էջերն անհետանան, նրանց ասելիքն անմահ է։"
+    },
+    details: [
+      { en: "925 Sterling Silver", hy: "Արծաթ՝ 925 հարգի" },
+      { en: "2.8 g", hy: "2.8 գ" }
     ],
   },
 ];
