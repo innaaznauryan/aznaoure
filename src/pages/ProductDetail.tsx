@@ -1,4 +1,4 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 import { useTranslation } from "react-i18next";
@@ -11,6 +11,7 @@ import { formatPrice } from "@/lib/utils";
 
 const ProductDetail = () => {
   const { id } = useParams<{ id: string }>();
+  const location = useLocation();
   const { t, i18n } = useTranslation();
   const { getProductById, getFeaturedProducts } = useProducts();
 
@@ -25,7 +26,7 @@ const ProductDetail = () => {
         <div className="text-center">
           <h1 className="font-serif text-3xl mb-4">{t("products.notFound")}</h1>
           <Button variant="luxuryOutline" asChild>
-            <Link to="/collections">{t("products.back")}</Link>
+            <Link to={`/collections${location.search}`}>{t("products.back")}</Link>
           </Button>
         </div>
       </div>
@@ -38,7 +39,7 @@ const ProductDetail = () => {
       <div className="bg-secondary py-4">
         <div className="container mx-auto px-4 lg:px-8">
           <Link
-            to="/collections"
+            to={`/collections${location.search}`}
             className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground transition-colors"
           >
             <ArrowLeft className="h-4 w-4 mr-2" />

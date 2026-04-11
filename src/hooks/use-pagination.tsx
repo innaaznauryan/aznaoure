@@ -1,8 +1,10 @@
-import { useState, useMemo, useEffect } from "react";
+import { useMemo } from "react";
+import { useSearchParams } from "react-router-dom";
 import { Product } from "@/lib/products.ts";
 
 export function usePagination (items: Product[], itemsPerPage: number = 8) {
-  const [currentPage, setCurrentPage] = useState(1);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const currentPage = Number(searchParams.get("page")) || 1;
   const totalPages = Math.ceil(items.length / itemsPerPage);
 
   const paginatedItems = useMemo(() => {
@@ -11,16 +13,16 @@ export function usePagination (items: Product[], itemsPerPage: number = 8) {
     return items.slice(start, end);
   }, [items, currentPage, itemsPerPage]);
 
-  useEffect(() => {
-    setCurrentPage(1);
-  }, [items]);
+  const goToPage = (page: number) => {
+    setSearchParams({ page: String(page) });
+  };
 
   return {
     currentPage,
     totalPages,
     paginatedItems,
-    goToPage: setCurrentPage,
-    nextPage: () => setCurrentPage((p) => Math.min(p + 1, totalPages)),
-    prevPage: () => setCurrentPage((p) => Math.max(p - 1, 1)),
+    goToPage,
+    nextPage: () => goToPage(Math.min(currentPage + 1, totalPages)),
+    prevPage: () => goToPage(Math.max(currentPage - 1, 1)),
   };
 }
