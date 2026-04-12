@@ -1,11 +1,13 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft, Minus, Plus, Trash2 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/context/CartContext";
 import { formatPrice } from "@/lib/utils";
 
 const Cart = () => {
+  const { i18n } = useTranslation();
   const { state, dispatch, totalPrice } = useCart();
 
   return (
@@ -63,7 +65,7 @@ const Cart = () => {
                     >
                       <img
                         src={item.product.image}
-                        alt={item.product.name}
+                        alt={item.product.id}
                         className="w-24 h-24 sm:w-32 sm:h-32 object-cover rounded-sm"
                       />
                     </Link>
@@ -76,7 +78,7 @@ const Cart = () => {
                           </p>
                           <Link to={`/product/${item.product.id}`}>
                             <h3 className="font-serif text-lg sm:text-xl hover:text-primary transition-colors break-words">
-                              {item.product.name}
+                              {item.product.name[i18n.language]}
                             </h3>
                           </Link>
                         </div>

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import { ArrowLeft, Check, Lock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -10,6 +11,7 @@ import { useToast } from "@/hooks/use-toast";
 import { formatPrice } from "@/lib/utils";
 
 const Checkout = () => {
+  const { i18n } = useTranslation();
   const { state, dispatch, totalPrice } = useCart();
   const { toast } = useToast();
   const [isProcessing, setIsProcessing] = useState(false);
@@ -260,11 +262,11 @@ const Checkout = () => {
                   <div key={item.product.id} className="flex gap-3 sm:gap-4">
                     <img
                       src={item.product.image}
-                      alt={item.product.name}
+                      alt={item.product.id}
                       className="w-16 h-16 sm:w-20 sm:h-20 object-cover rounded-sm flex-shrink-0"
                     />
                     <div className="flex-1 min-w-0">
-                      <h3 className="font-serif text-sm sm:text-base break-words">{item.product.name}</h3>
+                      <h3 className="font-serif text-sm sm:text-base break-words">{item.product.name[i18n.language]}</h3>
                       <p className="text-muted-foreground text-xs sm:text-sm">
                         Qty: {item.quantity}
                       </p>

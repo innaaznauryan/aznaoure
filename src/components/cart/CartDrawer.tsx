@@ -1,11 +1,13 @@
 import { X, Minus, Plus, ShoppingBag } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/context/CartContext";
 import { motion, AnimatePresence } from "framer-motion";
 import { formatPrice } from "@/lib/utils";
 
 export const CartDrawer = () => {
+  const { i18n } = useTranslation();
   const { state, dispatch, totalItems, totalPrice } = useCart();
 
   return (
@@ -70,11 +72,11 @@ export const CartDrawer = () => {
                     >
                       <img
                         src={item.product.image}
-                        alt={item.product.name}
+                        alt={item.product.id}
                         className="w-20 h-20 sm:w-24 sm:h-24 object-cover rounded-sm flex-shrink-0"
                       />
                       <div className="flex-1 min-w-0">
-                        <h3 className="font-serif text-base sm:text-lg break-words">{item.product.name}</h3>
+                        <h3 className="font-serif text-base sm:text-lg break-words">{item.product.name[i18n.language]}</h3>
                         <p className="text-muted-foreground text-xs sm:text-sm capitalize">
                           {item.product.category}
                         </p>
