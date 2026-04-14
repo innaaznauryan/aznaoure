@@ -14,28 +14,50 @@ const Contact = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const showSuccess = () => {
+    toast({
+      title: t("contact.success.title"),
+      description: t("contact.success.description"),
+    });
+  };
+
+  const showError = () => {
+    toast({
+      title: t("contact.error.title"),
+      description: t("contact.error.description"),
+      variant: "destructive",
+    });
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
 
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    formData.append(
+      "_subject",
+      `New message from ${form.firstName.value} ${form.lastName.value} on Aznaoure website`
+    );
+
     try {
-      // Simulate submission
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      const response = await fetch(import.meta.env.VITE_FORMSPREE_ENDPOINT,
+        {
+          method: "POST",
+          body: formData,
+          headers: {
+            Accept: "application/json",
+          },
+        })
+      if (!response.ok) {
+        await response.json().catch(() => null);
+        throw new Error("Submission failed");
+      }
 
-      toast({
-        title: t("contact.success.title"),
-        description: t("contact.success.description"),
-      });
-
-      // Reset form
-      (e.target as HTMLFormElement).reset();
+      form.reset();
+      showSuccess();
     } catch (error) {
-      console.error("Error sending message:", error);
-      toast({
-        title: t("contact.error.title"),
-        description: t("contact.error.description"),
-        variant: "destructive",
-      });
+      showError();
     } finally {
       setIsSubmitting(false);
     }
@@ -152,6 +174,7 @@ const Contact = () => {
                     <Label htmlFor="firstName">{t("contact.fName.label")}</Label>
                     <Input
                       id="firstName"
+                      name="firstName"
                       required
                       placeholder={t("contact.fName.placeholder")}
                       className="mt-2"
@@ -161,6 +184,7 @@ const Contact = () => {
                     <Label htmlFor="lastName">{t("contact.lName.label")}</Label>
                     <Input
                       id="lastName"
+                      name="lastName"
                       required
                       placeholder={t("contact.lName.placeholder")}
                       className="mt-2"
@@ -172,6 +196,7 @@ const Contact = () => {
                   <Label htmlFor="email">{t("contact.email.label")}</Label>
                   <Input
                     id="email"
+                    name="email"
                     type="email"
                     required
                     placeholder={t("contact.email.placeholder")}
@@ -183,6 +208,7 @@ const Contact = () => {
                   <Label htmlFor="phone">{t("contact.phone")}</Label>
                   <Input
                     id="phone"
+                    name="phone"
                     type="tel"
                     required
                     placeholder="(+374) 00 000 000"
@@ -194,6 +220,7 @@ const Contact = () => {
                   <Label htmlFor="message">{t("contact.message.label")}</Label>
                   <Textarea
                     id="message"
+                    name="message"
                     required
                     placeholder={t("contact.message.placeholder")}
                     rows={6}
