@@ -151,7 +151,7 @@ export const products: Product[] = [
     },
     details: [
       { en: "925 Sterling Silver", hy: "Արծաթ՝ 925 հարգի" },
-      { en: "27 գ", hy: "27 գ" }
+      { en: "27 g", hy: "27 գ" }
     ],
     featured: true,
     favorite: true,

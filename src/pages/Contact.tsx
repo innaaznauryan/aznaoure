@@ -110,7 +110,7 @@ const Contact = () => {
                         to="https://www.facebook.com/aznaoure"
                         target="_blank"
                       >
-                        Aznaoure Art Facebook
+                        Aznaoure Art
                       </Link>
                     </div>
                   </div>
@@ -124,7 +124,7 @@ const Contact = () => {
                           to="https://www.instagram.com/aznaoure"
                           target="_blank"
                       >
-                        Aznaoure Art Instagram
+                        Aznaoure Art
                       </Link>
                     </div>
                   </div>
