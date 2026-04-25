@@ -4,11 +4,13 @@ import { ProductCard } from "@/components/products/ProductCard";
 import { PaginationControls } from "@/components/PaginationControls.tsx";
 import { useCategoryChange } from "@/hooks/use-category-change.tsx";
 import { categories, Category } from "@/lib/products.ts";
+import { getLang } from "@/lib/get-lang.ts";
 import { useProducts } from "@/hooks/use-products.ts";
 import { usePagination } from "@/hooks/use-pagination.tsx";
 
 const Collections = () => {
   const { t, i18n } = useTranslation();
+  const lang = getLang(i18n.language);
   const { selectedCategory, handleCategoryChange } = useCategoryChange();
   const { products, getProductsByCategory } = useProducts();
 
@@ -71,7 +73,7 @@ const Collections = () => {
                     : "text-muted-foreground hover:text-foreground"
                 }`}
               >
-                {category.name[i18n.language]}
+                {category.name[lang]}
               </button>
             ))}
           </div>

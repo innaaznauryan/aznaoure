@@ -2,10 +2,12 @@ import { Link } from "react-router-dom";
 import { Facebook, Instagram } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { categories } from "@/lib/products";
+import { getLang } from "@/lib/get-lang.ts";
 import logo from "@/assets/logo-silver.webp";
 
 export const Footer = () => {
   const { t, i18n } = useTranslation();
+  const lang = getLang(i18n.language);
 
   return (
     <footer className="bg-foreground text-background">
@@ -33,7 +35,7 @@ export const Footer = () => {
                     to={`/collections?category=${id}`}
                     className="text-background/70 hover:text-background transition-colors duration-300"
                   >
-                    {category.name[i18n.language]}
+                    {category.name[lang]}
                   </Link>
                 </li>
               ))}

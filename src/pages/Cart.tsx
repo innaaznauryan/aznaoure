@@ -4,10 +4,12 @@ import { ArrowLeft, Minus, Plus, Trash2 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/context/CartContext";
+import { getLang } from "@/lib/get-lang.ts";
 import { formatPrice } from "@/lib/utils";
 
 const Cart = () => {
   const { i18n } = useTranslation();
+  const lang = getLang(i18n.language);
   const { state, dispatch, totalPrice } = useCart();
 
   return (
@@ -78,7 +80,7 @@ const Cart = () => {
                           </p>
                           <Link to={`/product/${item.product.id}`}>
                             <h3 className="font-serif text-lg sm:text-xl hover:text-primary transition-colors break-words">
-                              {item.product.name[i18n.language]}
+                              {item.product.name[lang]}
                             </h3>
                           </Link>
                         </div>

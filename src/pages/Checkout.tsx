@@ -8,10 +8,12 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useCart } from "@/context/CartContext";
 import { useToast } from "@/hooks/use-toast";
+import { getLang } from "@/lib/get-lang.ts";
 import { formatPrice } from "@/lib/utils";
 
 const Checkout = () => {
   const { i18n } = useTranslation();
+  const lang = getLang(i18n.language);
   const { state, dispatch, totalPrice } = useCart();
   const { toast } = useToast();
   const [isProcessing, setIsProcessing] = useState(false);
@@ -266,7 +268,7 @@ const Checkout = () => {
                       className="w-16 h-16 sm:w-20 sm:h-20 object-cover rounded-sm flex-shrink-0"
                     />
                     <div className="flex-1 min-w-0">
-                      <h3 className="font-serif text-sm sm:text-base break-words">{item.product.name[i18n.language]}</h3>
+                      <h3 className="font-serif text-sm sm:text-base break-words">{item.product.name[lang]}</h3>
                       <p className="text-muted-foreground text-xs sm:text-sm">
                         Qty: {item.quantity}
                       </p>

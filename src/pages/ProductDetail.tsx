@@ -7,12 +7,14 @@ import { ProductCard } from "@/components/products/ProductCard";
 import { ProductImageViewer } from "@/components/products/ProductImageViewer";
 import { useProducts } from "@/hooks/use-products.ts";
 import { categories } from "@/lib/products.ts";
+import { getLang } from "@/lib/get-lang.ts";
 import { formatPrice } from "@/lib/utils";
 
 const ProductDetail = () => {
   const { id } = useParams<{ id: string }>();
   const location = useLocation();
   const { t, i18n } = useTranslation();
+  const lang = getLang(i18n.language);
   const { getProductById, getFeaturedProducts } = useProducts();
 
   const product = getProductById(id);
@@ -69,17 +71,17 @@ const ProductDetail = () => {
               className="flex flex-col"
             >
               <p className="luxury-subheading mb-2">
-                {categories[product.category].name[i18n.language]}
+                {categories[product.category].name[lang]}
               </p>
               <h1 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-3 sm:mb-4">
-                {product.name[i18n.language]}
+                {product.name[lang]}
               </h1>
               <p className="font-serif text-2xl sm:text-3xl text-primary mb-4 sm:mb-6">
                 {formatPrice(product.price)}
               </p>
 
               <p className="text-muted-foreground text-sm sm:text-base leading-relaxed mb-6 sm:mb-8">
-                {product.description[i18n.language]}
+                {product.description[lang]}
               </p>
 
               <div className="mb-6 sm:mb-8">
@@ -93,7 +95,7 @@ const ProductDetail = () => {
                       className="text-muted-foreground text-sm sm:text-base flex items-start"
                     >
                       <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 mr-3 flex-shrink-0" />
-                      {detail[i18n.language]}
+                      {detail[lang]}
                     </li>
                   ))}
                 </ul>

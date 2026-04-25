@@ -2,6 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { Product, categories } from "@/lib/products";
+import { getLang } from "@/lib/get-lang.ts";
 import { formatPrice } from "@/lib/utils";
 
 interface ProductCardProps {
@@ -12,6 +13,7 @@ interface ProductCardProps {
 export const ProductCard = ({ product, index = 0 }: ProductCardProps) => {
   const location = useLocation();
   const { i18n } = useTranslation();
+  const lang = getLang(i18n.language);
 
   return (
     <motion.article
@@ -34,11 +36,11 @@ export const ProductCard = ({ product, index = 0 }: ProductCardProps) => {
       
       <div className="space-y-2">
         <p className="text-xs font-sans tracking-widest uppercase text-muted-foreground">
-          {categories[product.category].name[i18n.language]}
+          {categories[product.category].name[lang]}
         </p>
         <Link to={`/product/${product.id}${location.search}`}>
           <h3 className="font-serif text-xl group-hover:text-primary transition-colors duration-300">
-            {product.name[i18n.language]}
+            {product.name[lang]}
           </h3>
         </Link>
         <div className="flex items-center justify-between pt-2">

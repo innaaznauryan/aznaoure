@@ -4,12 +4,14 @@ import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { ProductCard } from "@/components/products/ProductCard";
 import { categories } from "@/lib/products.ts";
+import { getLang } from "@/lib/get-lang.ts";
 import { useProducts } from "@/hooks/use-products.ts";
 import heroImage from "@/assets/hero-jewelry.webp";
 import { ArrowRight, Diamond, Shield, Truck } from "lucide-react";
 
 const Index = () => {
   const { t, i18n } = useTranslation();
+  const lang = getLang(i18n.language);
   const { getFeaturedProducts } = useProducts();
   const featuredProducts = getFeaturedProducts();
 
@@ -89,10 +91,10 @@ const Index = () => {
                   className="h-full group block text-center p-4 sm:p-6 lg:p-8 bg-background rounded-sm hover:shadow-card transition-all duration-300"
                 >
                   <h3 className="font-serif text-lg sm:text-xl lg:text-2xl mb-1 sm:mb-2 group-hover:text-primary transition-colors">
-                    {category.name[i18n.language]}
+                    {category.name[lang]}
                   </h3>
                   <p className="text-muted-foreground text-xs sm:text-sm">
-                    {category.description[i18n.language]}
+                    {category.description[lang]}
                   </p>
                 </Link>
               </motion.div>
