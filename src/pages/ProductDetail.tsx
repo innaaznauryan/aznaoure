@@ -2,10 +2,11 @@ import { useParams, Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { Button } from "@/components/ui/button";
 import { ProductCard } from "@/components/products/ProductCard";
 import { ProductImageViewer } from "@/components/products/ProductImageViewer";
+import { ProductNotFound } from "@/components/products/ProductNotFound";
 import { useProducts } from "@/hooks/use-products.ts";
+import { useProduct } from "@/hooks/use-product.ts";
 import { categories } from "@/lib/products.ts";
 import { getLang } from "@/lib/get-lang.ts";
 import { formatPrice } from "@/lib/utils";
@@ -15,24 +16,26 @@ const ProductDetail = () => {
   const location = useLocation();
   const { t, i18n } = useTranslation();
   const lang = getLang(i18n.language);
-  const { getProductById, getFeaturedProducts } = useProducts();
+  const { getFeaturedProducts, loading: productsLoading, error: productsError } = useProducts();
+  const { product, loading: productLoading, error: productError } = useProduct(id);
 
-  const product = getProductById(id);
+  const loading = productsLoading || productLoading;
+  const error = productsError || productError;
+
   const relatedProducts = getFeaturedProducts()
     .filter((p) => p.id !== id)
     .slice(0, 4);
 
-  if (!product) {
+  if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="font-serif text-3xl mb-4">{t("products.notFound")}</h1>
-          <Button variant="luxuryOutline" asChild>
-            <Link to={`/collections${location.search}`}>{t("products.back")}</Link>
-          </Button>
-        </div>
+      <div className="min-h-screen flex justify-center items-center">
+        <div className="w-8 h-8 border-2 border-foreground border-t-transparent rounded-full animate-spin" />
       </div>
     );
+  }
+
+  if (!product || error) {
+    return <ProductNotFound message={error} backTo={`/collections${location.search}`} />;
   }
 
   return (

@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { Category, Product } from "@/lib/products.ts";
 import { fetchProducts } from "@/lib/api.ts";
+import { useTranslation } from "react-i18next";
 
 export const useProducts = () => {
+  const { t } = useTranslation();
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -10,9 +12,9 @@ export const useProducts = () => {
   useEffect(() => {
     fetchProducts()
       .then(setProducts)
-      .catch((err) => setError(err.message))
+      .catch(() => setError(t("products.failedToFetch")))
       .finally(() => setLoading(false));
-  }, []);
+  }, [t]);
 
   const getProductsByCategory = (category: Category) => {
     return products.filter((p) => p.category === category);
@@ -26,10 +28,6 @@ export const useProducts = () => {
     return products.filter((p) => p.favorite);
   };
 
-  const getProductById = (id: string) => {
-    return products.find((p) => p.id === id);
-  };
-
   const toggleFavorite = (id: string) => {
     // TODO: toggleFavorite logic
   };
@@ -41,7 +39,6 @@ export const useProducts = () => {
     getProductsByCategory,
     getFeaturedProducts,
     getFavoriteProducts,
-    getProductById,
     toggleFavorite,
   };
 };
