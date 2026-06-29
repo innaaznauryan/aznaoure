@@ -1,6 +1,18 @@
-import { Category, products } from "@/lib/products.ts";
+import { useState, useEffect } from "react";
+import { Category, Product } from "@/lib/products.ts";
+import { fetchProducts } from "@/lib/api.ts";
 
 export const useProducts = () => {
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    fetchProducts()
+      .then(setProducts)
+      .catch((err) => setError(err.message))
+      .finally(() => setLoading(false));
+  }, []);
 
   const getProductsByCategory = (category: Category) => {
     return products.filter((p) => p.category === category);
@@ -24,6 +36,8 @@ export const useProducts = () => {
 
   return {
     products,
+    loading,
+    error,
     getProductsByCategory,
     getFeaturedProducts,
     getFavoriteProducts,

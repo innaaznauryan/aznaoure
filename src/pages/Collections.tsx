@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
-import { ProductCard } from "@/components/products/ProductCard";
+import { ProductGrid } from "@/components/products/ProductGrid";
 import { PaginationControls } from "@/components/PaginationControls.tsx";
 import { useCategoryChange } from "@/hooks/use-category-change.tsx";
 import { categories, Category } from "@/lib/products.ts";
@@ -12,7 +12,7 @@ const Collections = () => {
   const { t, i18n } = useTranslation();
   const lang = getLang(i18n.language);
   const { selectedCategory, handleCategoryChange } = useCategoryChange();
-  const { products, getProductsByCategory } = useProducts();
+  const { products, loading, error, getProductsByCategory } = useProducts();
 
   const filteredProducts = selectedCategory
     ? getProductsByCategory(selectedCategory)
@@ -83,19 +83,11 @@ const Collections = () => {
       {/* Products Grid */}
       <section className="py-8 sm:py-12 lg:py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8">
-            {currentProducts.map((product, index) => (
-              <ProductCard key={product.id} product={product} index={index} />
-            ))}
-          </div>
-
-          {filteredProducts.length === 0 && (
-            <div className="text-center py-12 sm:py-16">
-              <p className="text-muted-foreground text-base sm:text-lg">
-                {t("products.noProducts")}
-              </p>
-            </div>
-          )}
+          <ProductGrid
+            products={currentProducts}
+            loading={loading}
+            error={error}
+          />
         </div>
       </section>
 

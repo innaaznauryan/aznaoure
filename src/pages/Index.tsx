@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
-import { ProductCard } from "@/components/products/ProductCard";
+import { ProductGrid } from "@/components/products/ProductGrid";
 import { categories } from "@/lib/products.ts";
 import { getLang } from "@/lib/get-lang.ts";
 import { useProducts } from "@/hooks/use-products.ts";
@@ -12,7 +12,7 @@ import { ArrowRight, Diamond, Shield, Truck } from "lucide-react";
 const Index = () => {
   const { t, i18n } = useTranslation();
   const lang = getLang(i18n.language);
-  const { getFeaturedProducts } = useProducts();
+  const { loading, error, getFeaturedProducts } = useProducts();
   const featuredProducts = getFeaturedProducts();
 
   return (
@@ -119,11 +119,11 @@ const Index = () => {
             <div className="luxury-divider mt-4 sm:mt-6" />
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-            {featuredProducts.map((product, index) => (
-              <ProductCard key={product.id} product={product} index={index} />
-            ))}
-          </div>
+          <ProductGrid
+            products={featuredProducts}
+            loading={loading}
+            error={error}
+          />
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
