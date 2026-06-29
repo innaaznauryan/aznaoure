@@ -3,8 +3,10 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "react-i18next";
-import logo from "@/assets/logo-bronze.webp";
+import { getMediaUrl } from "@/lib/api.ts";
 import LanguageSwitcher from "@/components/LanguageSwitcher.tsx";
+
+const logo = getMediaUrl("images/logo-bronze.webp")
 
 export const Header = () => {
   const { t } = useTranslation();

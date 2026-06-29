@@ -2,7 +2,9 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
-import aboutImage from "@/assets/about-craftsmanship.webp";
+import { getMediaUrl } from "@/lib/api.ts";
+
+const aboutImage = getMediaUrl("images/about-craftsmanship.webp");
 
 const About = () => {
   const { t } = useTranslation();

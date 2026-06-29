@@ -6,8 +6,10 @@ import { ProductGrid } from "@/components/products/ProductGrid";
 import { categories } from "@/lib/products.ts";
 import { getLang } from "@/lib/get-lang.ts";
 import { useProducts } from "@/hooks/use-products.ts";
-import heroImage from "@/assets/hero-jewelry.webp";
+import { getMediaUrl } from "@/lib/api.ts";
 import { ArrowRight, Diamond, Shield, Truck } from "lucide-react";
+
+const heroImage = getMediaUrl("images/hero-jewelry.webp")
 
 const Index = () => {
   const { t, i18n } = useTranslation();
