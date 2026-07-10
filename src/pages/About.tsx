@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
@@ -11,6 +12,17 @@ const About = () => {
 
   return (
     <div className="min-h-screen">
+      {/* Meta tags */}
+      <Helmet>
+        <title>About Us | Aznaoure Art</title>
+        <meta name="description" content="Learn the story behind Aznaoure Art and our Armenian authentic jewelry." />
+        <meta property="og:title" content="About Us" />
+        <meta property="og:description" content="Learn the story behind Aznaoure Art and our Armenian authentic jewelry." />
+        <meta property="og:image" content="https://aznaoure.com/hero-jewelry.webp" />
+        <meta property="og:url" content="https://aznaoure.com/about" />
+        <link rel="canonical" href="https://aznaoure.com/about" />
+      </Helmet>
+
       {/* Hero */}
       <section className="py-12 sm:py-16 lg:py-24 bg-secondary">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">

@@ -1,4 +1,5 @@
 import { useParams, Link, useLocation } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 import { useTranslation } from "react-i18next";
@@ -40,6 +41,17 @@ const ProductDetail = () => {
 
   return (
     <div className="min-h-screen">
+      {/* Meta tags */}
+      <Helmet>
+        <title>{product.name.en} | Aznaoure Art</title>
+        <meta name="description" content={product.description.en} />
+        <meta property="og:title" content={product.name.en} />
+        <meta property="og:description" content={product.description.en} />
+        <meta property="og:image" content={product.image} />
+        <meta property="og:url" content={`https://aznaoure.com/product/${product.id}`} />
+        <link rel="canonical" href={`https://aznaoure.com/product/${product.id}`} />
+      </Helmet>
+
       {/* Breadcrumb */}
       <div className="bg-secondary py-4">
         <div className="container mx-auto px-4 lg:px-8">

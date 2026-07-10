@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Helmet } from 'react-helmet-async';
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
@@ -19,6 +20,17 @@ const Index = () => {
 
   return (
     <div className="min-h-screen">
+      {/* Meta tags */}
+      <Helmet>
+        <title>Aznaoure Art</title>
+        <meta name="description" content="Discover Aznaoure Art - unique, authentic jewelry inspired by Armenian heritage and culture. Shop rings, necklaces, earrings and more, with worldwide shipping." />
+        <meta property="og:title" content="Aznaoure Art" />
+        <meta property="og:description" content="Discover Aznaoure Art - unique, authentic jewelry inspired by Armenian heritage and culture. Shop rings, necklaces, earrings and more, with worldwide shipping." />
+        <meta property="og:image" content="https://aznaoure.com/hero-jewelry.webp" />
+        <meta property="og:url" content="https://aznaoure.com/" />
+        <link rel="canonical" href="https://aznaoure.com/" />
+      </Helmet>
+
       {/* Hero Section */}
       <section className="relative min-h-[60vh] sm:h-[70vh] lg:h-[90vh] flex items-center py-20 sm:py-0">
         <div className="absolute inset-0">
