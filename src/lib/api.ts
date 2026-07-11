@@ -13,7 +13,7 @@ export function getMediaUrl(path: string): string {
 }
 
 export async function fetchProducts() {
-    const response = await fetch(`${BASE_URL}/api/products`);
+    const response = await fetch(`${BASE_URL}/api/products/`);
     if (!response.ok) throw new Error("Failed to fetch products");
     const products = await response.json();
     return products.map((p) => ({...p, image: getMediaUrl(p.image)}));
