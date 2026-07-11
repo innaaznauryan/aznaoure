@@ -1,5 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { Product } from "@/lib/products.ts";
+import { Spinner } from "@/components/ui/spinner";
 import { ProductCard } from "@/components/products/ProductCard";
 
 interface ProductGridProps {
@@ -20,7 +21,7 @@ export const ProductGrid = ({
   if (loading) {
     return (
       <div className="flex justify-center items-center py-16">
-        <div className="w-8 h-8 border-2 border-foreground border-t-transparent rounded-full animate-spin"/>
+        <Spinner />
       </div>
     );
   }
