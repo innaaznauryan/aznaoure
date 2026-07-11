@@ -1,15 +1,17 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, User } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { getMediaUrl } from "@/lib/api.ts";
+import { useAuth } from "@/context/AuthContext.tsx";
 import LanguageSwitcher from "@/components/LanguageSwitcher.tsx";
 
 const logo = getMediaUrl("images/logo-bronze.webp")
 
 export const Header = () => {
   const { t } = useTranslation();
+  const { isAuthenticated, user } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
 
@@ -64,7 +66,27 @@ export const Header = () => {
             ))}
           </nav>
 
-          <LanguageSwitcher/>
+          <div className="flex items-center gap-4 sm:gap-6">
+            {/* Auth link - desktop */}
+            <Link
+              to={isAuthenticated ? "/profile" : "/signin"}
+              className="hidden lg:flex items-center gap-2 text-sm font-sans tracking-widest uppercase text-muted-foreground hover:text-foreground transition-colors duration-300"
+            >
+              <User className="h-4 w-4" />
+              {isAuthenticated ? user?.first_name : t("navigation.signIn")}
+            </Link>
+
+            {/* Auth icon only - mobile */}
+            <Link
+              to={isAuthenticated ? "/profile" : "/signin"}
+              className="lg:hidden p-2"
+              aria-label={isAuthenticated ? "Profile" : "Sign in"}
+            >
+              <User className="h-5 w-5 text-foreground" />
+            </Link>
+
+            <LanguageSwitcher/>
+          </div>
         </div>
       </div>
 
@@ -95,6 +117,18 @@ export const Header = () => {
                   {link.label}
                 </Link>
               ))}
+
+              {/* Auth link inside mobile menu too */}
+              <Link
+                to={isAuthenticated ? "/profile" : "/signin"}
+                onClick={() => {
+                  setIsMenuOpen(false);
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
+                className="text-lg font-sans tracking-widest uppercase py-2 text-muted-foreground"
+              >
+                {isAuthenticated ? t("navigation.profile") : t("navigation.signIn")}
+              </Link>
             </nav>
           </motion.div>
         )}

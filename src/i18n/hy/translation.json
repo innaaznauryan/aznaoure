@@ -4,7 +4,9 @@
     "collections": "Հավաքածուներ",
     "favorites": "Նախընտրելիներ",
     "about": "Մեր մասին",
-    "contact": "Կապ"
+    "contact": "Կապ",
+    "signIn": "Մուտք",
+    "profile": "Հաշիվ"
   },
   "home": {
     "title1": "Խոսուն",
@@ -120,6 +122,55 @@
     "details": "Մանրամասներ",
     "alsoLike": "Կարող եք հավանել նաև",
     "related": "Նմանատիպ զարդեր"
+  },
+  "profile": {
+    "nav": {
+      "overview": "Ընդհանուր",
+      "addresses": "Հասցեներ",
+      "favorites": "Ընտրյալներ",
+      "orders": "Պատվերներ",
+      "logout": "Դուրս գալ"
+    },
+    "heading": "Հաշվի տվյալներ",
+    "name": "Անուն",
+    "email": "Էլ. հասցե",
+    "phone": "Հեռախոսահամար"
+  },
+  "signIn": {
+    "title": "Մուտք",
+    "email": { "label": "Էլ. հասցե", "placeholder": "you@example.com" },
+    "password": { "label": "Գաղտնաբառ", "placeholder": "Մուտքագրեք ձեր գաղտնաբառը" },
+    "submit": "Մուտք գործել",
+    "submitting": "Մուտք է գործում...",
+    "noAccount": "Հաշիվ չունե՞ք",
+    "signUpLink": "Գրանցվել",
+    "orContinueWith": "Կամ շարունակել"
+  },
+  "signUp": {
+    "title": "Ստեղծել հաշիվ",
+    "firstName": { "label": "Անուն", "placeholder": "Անուն" },
+    "lastName": { "label": "Ազգանուն", "placeholder": "Ազգանուն" },
+    "email": { "label": "Էլ. հասցե", "placeholder": "you@example.com" },
+    "phone": { "label": "Հեռախոսահամար", "placeholder": "(+374) 00 000 000" },
+    "password": { "label": "Գաղտնաբառ", "placeholder": "Առնվազն 8 նիշ" },
+    "submit": "Գրանցվել",
+    "submitting": "Հաշիվը ստեղծվում է...",
+    "haveAccount": "Արդեն ունե՞ք հաշիվ",
+    "signInLink": "Մուտք գործել"
+  },
+  "validation": {
+    "required": "Այս դաշտը պարտադիր է",
+    "invalidEmail": "Խնդրում ենք մուտքագրել վավեր էլ. հասցե",
+    "passwordTooShort": "Գաղտնաբառը պետք է պարունակի առնվազն 8 նիշ",
+    "invalidPhone": "Խնդրում ենք մուտքագրել վավեր հեռախոսահամար"
+  },
+  "authErrors": {
+    "network_error": "Հնարավոր չէ միանալ: Խնդրում ենք ստուգել ինտերնետ կապը և փորձել կրկին:",
+    "invalid_credentials": "Սխալ էլ. հասցե կամ գաղտնաբառ:",
+    "email_already_exists": "Այս էլ. հասցեով հաշիվն արդեն գոյություն ունի:",
+    "validation_error": "Խնդրում ենք ստուգել տվյալները և փորձել կրկին:",
+    "server_error": "Ինչ-որ բան այն չէ մեր կողմից: Խնդրում ենք փորձել մի փոքր ուշ:",
+    "rate_limited": "Չափազանց շատ փորձեր: Խնդրում ենք սպասել և կրկին փորձել:"
   },
   "404": {
     "notFound": "Չկա սենց բան :)",

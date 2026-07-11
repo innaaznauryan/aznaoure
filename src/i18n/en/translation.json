@@ -4,7 +4,9 @@
     "collections": "Collections",
     "favorites": "Favorites",
     "about": "About",
-    "contact": "Contact"
+    "contact": "Contact",
+    "signIn": "Sign In",
+    "profile": "Profile"
   },
   "home": {
     "title1": "Timeless",
@@ -120,6 +122,55 @@
     "details": "Details",
     "alsoLike": "You May Also Like",
     "related": "Related Pieces"
+  },
+  "profile": {
+    "nav": {
+      "overview": "Overview",
+      "addresses": "Addresses",
+      "favorites": "Favorites",
+      "orders": "Orders",
+      "logout": "Log Out"
+    },
+    "heading": "Account Details",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone"
+  },
+  "signIn": {
+    "title": "Sign In",
+    "email": { "label": "Email", "placeholder": "you@example.com" },
+    "password": { "label": "Password", "placeholder": "Enter your password" },
+    "submit": "Sign In",
+    "submitting": "Signing in...",
+    "noAccount": "Don't have an account?",
+    "signUpLink": "Sign up",
+    "orContinueWith": "Or continue with"
+  },
+  "signUp": {
+    "title": "Create Account",
+    "firstName": { "label": "First Name", "placeholder": "First name" },
+    "lastName": { "label": "Last Name", "placeholder": "Last name" },
+    "email": { "label": "Email", "placeholder": "you@example.com" },
+    "phone": { "label": "Phone", "placeholder": "(+374) 00 000 000" },
+    "password": { "label": "Password", "placeholder": "At least 8 characters" },
+    "submit": "Sign Up",
+    "submitting": "Creating account...",
+    "haveAccount": "Already have an account?",
+    "signInLink": "Sign in"
+  },
+  "validation": {
+    "required": "This field is required",
+    "invalidEmail": "Please enter a valid email address",
+    "passwordTooShort": "Password must be at least 8 characters",
+    "invalidPhone": "Please enter a valid phone number"
+  },
+  "authErrors": {
+    "network_error": "Unable to connect. Please check your internet connection and try again.",
+    "invalid_credentials": "Incorrect email or password.",
+    "email_already_exists": "An account with this email already exists.",
+    "validation_error": "Please check your information and try again.",
+    "server_error": "Something went wrong on our end. Please try again shortly.",
+    "rate_limited": "Too many attempts. Please wait a moment and try again."
   },
   "404": {
     "notFound": "Oops! Page not found",
