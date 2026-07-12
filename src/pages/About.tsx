@@ -78,6 +78,12 @@ const About = () => {
               <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
                 {t("about.paragraph4")}
               </p>
+              <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
+                {t("about.paragraph5")}
+              </p>
+              <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
+                {t("about.paragraph6")}
+              </p>
             </motion.div>
           </div>
         </div>
