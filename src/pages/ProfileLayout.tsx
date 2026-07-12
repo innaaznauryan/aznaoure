@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
-import { NavLink } from "@/components/NavLink";
+import { NavLink } from "@/components/ui/nav-link.tsx";
 import { useAuth } from "@/context/AuthContext";
 
 export default function ProfileLayout() {

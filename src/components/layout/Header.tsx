@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Menu, X, User } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { getMediaUrl } from "@/lib/api.ts";
 import { useAuth } from "@/context/AuthContext.tsx";
+import { NavLink } from "@/components/ui/nav-link.tsx";
 import LanguageSwitcher from "@/components/LanguageSwitcher.tsx";
 
 const logo = getMediaUrl("images/logo-bronze.webp")
@@ -13,7 +14,6 @@ export const Header = () => {
   const { t } = useTranslation();
   const { isAuthenticated, user } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const location = useLocation();
 
   const navLinks = [
     { href: "/", label: t("navigation.home") },
@@ -21,6 +21,10 @@ export const Header = () => {
     { href: "/about", label: t("navigation.about") },
     { href: "/contact", label: t("navigation.contact") },
   ];
+
+  const navLinkClass = "text-sm font-sans tracking-widest uppercase transition-colors duration-300";
+  const navLinkActiveClass = "text-primary";
+  const navLinkInactiveClass = "text-muted-foreground hover:text-foreground";
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
@@ -52,38 +56,28 @@ export const Header = () => {
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-8 flex-1 justify-center">
             {navLinks.map((link) => (
-              <Link
+              <NavLink
                 key={link.href}
                 to={link.href}
-                className={`text-sm font-sans tracking-widest uppercase transition-colors duration-300 ${
-                  location.pathname === link.href
-                    ? "text-primary"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
+                end={link.href === "/"}
+                className={`${navLinkClass} ${navLinkInactiveClass}`}
+                activeClassName={navLinkActiveClass}
               >
                 {link.label}
-              </Link>
+              </NavLink>
             ))}
           </nav>
 
           <div className="flex items-center gap-4 sm:gap-6">
             {/* Auth link - desktop */}
-            <Link
+            <NavLink
               to={isAuthenticated ? "/profile" : "/signin"}
               className="hidden lg:flex items-center gap-2 text-sm font-sans tracking-widest uppercase text-muted-foreground hover:text-foreground transition-colors duration-300"
+              activeClassName={navLinkActiveClass}
             >
               <User className="h-4 w-4" />
               {isAuthenticated ? user?.first_name : t("navigation.signIn")}
-            </Link>
-
-            {/* Auth icon only - mobile */}
-            <Link
-              to={isAuthenticated ? "/profile" : "/signin"}
-              className="lg:hidden p-2"
-              aria-label={isAuthenticated ? "Profile" : "Sign in"}
-            >
-              <User className="h-5 w-5 text-foreground" />
-            </Link>
+            </NavLink>
 
             <LanguageSwitcher/>
           </div>
@@ -101,34 +95,33 @@ export const Header = () => {
           >
             <nav className="container mx-auto px-4 sm:px-6 py-4 sm:py-6 flex flex-col gap-3 sm:gap-4">
               {navLinks.map((link) => (
-                <Link
+                <NavLink
                   key={link.href}
                   to={link.href}
+                  end={link.href === "/"}
+                  className={`${navLinkClass} ${navLinkInactiveClass}`}
+                  activeClassName={navLinkActiveClass}
                   onClick={() => {
                     setIsMenuOpen(false);
                     window.scrollTo({ top: 0, behavior: "smooth" });
                   }}
-                  className={`text-lg font-sans tracking-widest uppercase py-2 transition-colors duration-300 ${
-                    location.pathname === link.href
-                      ? "text-primary"
-                      : "text-muted-foreground"
-                  }`}
                 >
                   {link.label}
-                </Link>
+                </NavLink>
               ))}
 
               {/* Auth link inside mobile menu too */}
-              <Link
+              <NavLink
                 to={isAuthenticated ? "/profile" : "/signin"}
                 onClick={() => {
                   setIsMenuOpen(false);
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 }}
                 className="text-lg font-sans tracking-widest uppercase py-2 text-muted-foreground"
+                activeClassName={navLinkActiveClass}
               >
                 {isAuthenticated ? t("navigation.profile") : t("navigation.signIn")}
-              </Link>
+              </NavLink>
             </nav>
           </motion.div>
         )}
