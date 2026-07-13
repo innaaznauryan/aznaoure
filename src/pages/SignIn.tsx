@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import SEO from "@/components/SEO.tsx";
 import GoogleAuthButton from "@/components/auth/GoogleAuthButton";
 import AuthDivider from "@/components/auth/AuthDivider";
 import { useAuth } from '../context/AuthContext';
@@ -64,6 +65,13 @@ export default function SignIn() {
 
   return (
     <div className="max-w-md mx-auto px-4 py-16 sm:py-24">
+      {/* Meta tags */}
+      <SEO
+        title="Sign In"
+        description="Sign in to your Aznaoure Art account to view your favorites, make orders, and update your details."
+        noindex
+      />
+
       <motion.div
         initial={{ opacity: 0, x: 30 }}
         whileInView={{ opacity: 1, x: 0 }}

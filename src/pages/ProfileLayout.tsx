@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
 import { NavLink } from "@/components/ui/nav-link.tsx";
+import SEO from "@/components/SEO.tsx";
 import { useAuth } from "@/context/AuthContext";
 
 export default function ProfileLayout() {
@@ -14,9 +14,12 @@ export default function ProfileLayout() {
 
   return (
     <div className="min-h-screen">
-      <Helmet>
-        <title>{t("profile.title")} | Aznaoure Art</title>
-      </Helmet>
+      {/* Meta tags */}
+      <SEO
+        title="Profile"
+        description="Manage your Aznaoure Art account, view your favorites and orders, and update your details."
+        noindex
+      />
 
       <section className="py-8 sm:py-12 lg:py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">

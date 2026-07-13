@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import { Phone, Mail, Facebook, Instagram } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -67,15 +67,11 @@ const Contact = () => {
   return (
     <div className="min-h-screen">
       {/* Meta tags */}
-      <Helmet>
-        <title>Contact Us | Aznaoure Art</title>
-        <meta name="description" content="Get in touch with Aznaoure Art for questions, custom orders, or support." />
-        <meta property="og:title" content="Contact Us" />
-        <meta property="og:description" content="Get in touch with Aznaoure Art for questions, custom orders, or support." />
-        <meta property="og:image" content="https://aznaoure.com/hero-jewelry.webp" />
-        <meta property="og:url" content="https://aznaoure.com/contact" />
-        <link rel="canonical" href="https://aznaoure.com/contact" />
-      </Helmet>
+      <SEO
+        title="Contact Us"
+        description="Get in touch with Aznaoure Art for questions, custom orders, or support."
+        path="/contact"
+      />
 
       {/* Hero */}
       <section className="py-12 sm:py-16 lg:py-24 bg-secondary">

@@ -1,22 +1,19 @@
-import { motion } from "framer-motion";
-import { Helmet } from "react-helmet-async";
-import { useTranslation } from "react-i18next";
+import SEO from "@/components/SEO.tsx";
 import { ProductGrid } from "@/components/products/ProductGrid";
 import { useProducts } from "@/hooks/use-products.ts";
 
 const Favorites = () => {
-  const { t } = useTranslation();
   const { loading, error, getFavoriteProducts } = useProducts();
   const favoriteProducts = getFavoriteProducts();
 
   return (
     <div className="min-h-screen">
       {/* Meta tags */}
-      <Helmet>
-        <title>Favorites | Aznaoure Art</title>
-        <meta name="description" content="View the jewelry pieces you've saved from Aznaoure Art." />
-        <meta name="robots" content="noindex, nofollow" />
-      </Helmet>
+      <SEO
+        title="Favorites"
+        description="View the jewelry pieces you've saved from Aznaoure Art."
+        noindex
+      />
 
       {/* Favorites Section */}
       <section className="py-8 sm:py-12 lg:py-16">

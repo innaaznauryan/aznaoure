@@ -3,14 +3,12 @@ import { Helmet } from 'react-helmet-async';
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
+import SEO from "@/components/SEO";
 import { ProductGrid } from "@/components/products/ProductGrid";
 import { categories } from "@/lib/products.ts";
 import { getLang } from "@/lib/get-lang.ts";
 import { useProducts } from "@/hooks/use-products.ts";
-import { getMediaUrl } from "@/lib/api.ts";
 import { ArrowRight, Diamond, Shield, Truck } from "lucide-react";
-
-const heroImage = getMediaUrl("images/hero-jewelry.webp")
 
 const Index = () => {
   const { t, i18n } = useTranslation();
@@ -30,12 +28,17 @@ const Index = () => {
         <meta property="og:url" content="https://aznaoure.com/" />
         <link rel="canonical" href="https://aznaoure.com/" />
       </Helmet>
+      <SEO
+        title="Aznaoure Art"
+        description="Discover Aznaoure Art - unique, authentic jewelry inspired by Armenian heritage and culture. Shop rings, necklaces, earrings and more, with worldwide shipping."
+        path="/"
+      />
 
       {/* Hero Section */}
       <section className="relative min-h-[60vh] sm:h-[70vh] lg:h-[90vh] flex items-center py-20 sm:py-0">
         <div className="absolute inset-0">
           <img
-            src={heroImage}
+            src="/hero-jewelry.webp"
             alt="Luxury jewelry"
             className="w-full h-full object-cover"
           />

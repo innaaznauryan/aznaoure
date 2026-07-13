@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import SEO from "@/components/SEO.tsx";
 import GoogleAuthButton from "@/components/auth/GoogleAuthButton";
 import AuthDivider from "@/components/auth/AuthDivider";
 import { useAuth } from '../context/AuthContext';
@@ -83,6 +84,12 @@ export default function SignUp() {
 
   return (
     <div className="max-w-md mx-auto px-4 py-16 sm:py-24">
+      {/* Meta tags */}
+      <SEO
+        title="Sign Up"
+        description="Create an Aznaoure Art account to save your favorite pieces, place orders, and track their status."
+        noindex
+      />
       <motion.div
         initial={{ opacity: 0, x: 30 }}
         whileInView={{ opacity: 1, x: 0 }}

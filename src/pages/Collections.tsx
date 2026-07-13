@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
-import { Helmet } from "react-helmet-async";
+import SEO from "@/components/SEO";
 import { ProductGrid } from "@/components/products/ProductGrid";
 import { PaginationControls } from "@/components/PaginationControls.tsx";
 import { useCategoryChange } from "@/hooks/use-category-change.tsx";
@@ -31,15 +31,11 @@ const Collections = () => {
   return (
     <div className="min-h-screen">
       {/* Meta tags */}
-      <Helmet>
-        <title>Collections | Aznaoure Art</title>
-        <meta name="description" content="Browse our full collection of Armenian authentic jewelry - rings, necklaces, earrings and more, each rooted in Armenian heritage and culture." />
-        <meta property="og:title" content="Collections" />
-        <meta property="og:description" content="Browse our full collection of Armenian authentic jewelry - rings, necklaces, earrings and more, each rooted in Armenian heritage and culture." />
-        <meta property="og:image" content="https://aznaoure.com/hero-jewelry.webp" />
-        <meta property="og:url" content="https://aznaoure.com/collections" />
-        <link rel="canonical" href="https://aznaoure.com/collections" />
-      </Helmet>
+      <SEO
+        title="Collections"
+        description="Browse our full collection of Armenian authentic jewelry - rings, necklaces, earrings and more, each rooted in Armenian heritage and culture."
+        path="/collections"
+      />
 
       {/* Hero */}
       <section className="py-12 sm:py-16 lg:py-24 bg-secondary">
