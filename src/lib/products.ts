@@ -14,7 +14,6 @@ export interface Product {
   description: TranslatedString;
   details: TranslatedString[];
   featured?: boolean;
-  favorite?: boolean;
 }
 
 export const categories: Record<

@@ -8,6 +8,14 @@ export class ApiError extends Error {
     }
 }
 
+function authHeaders(): HeadersInit {
+    const token = localStorage.getItem("aznaoure_token");
+    return {
+        "Content-Type": "application/json",
+        ...(token ? { Authorization: `Bearer ${token}` } : {}),
+    };
+}
+
 export function getMediaUrl(path: string): string {
     return `${BASE_URL}/media/${path}`;
 }
@@ -24,6 +32,32 @@ export async function fetchProductById(id: string) {
     if (!response.ok) throw new Error("Failed to fetch product");
     const product = await response.json();
     return {...product, image: getMediaUrl(product.image)};
+}
+
+export async function fetchFavorites() {
+    const response = await fetch(`${BASE_URL}/api/favorites/`, {
+        headers: authHeaders(),
+    });
+    if (!response.ok) throw new Error("Failed to fetch favorites");
+    const favorites = await response.json();
+    return favorites.map((p) => ({ ...p, image: getMediaUrl(p.image) }));
+}
+
+export async function addFavorite(productId: string) {
+    const response = await fetch(`${BASE_URL}/api/favorites/${productId}`, {
+        method: "POST",
+        headers: authHeaders(),
+    });
+    if (!response.ok) throw new Error("Failed to add favorite");
+    return response.json();
+}
+
+export async function removeFavorite(productId: string): Promise<void> {
+    const response = await fetch(`${BASE_URL}/api/favorites/${productId}`, {
+        method: "DELETE",
+        headers: authHeaders(),
+    });
+    if (!response.ok) throw new Error("Failed to remove favorite");
 }
 
 export async function signup(data: {

@@ -24,21 +24,11 @@ export const useProducts = () => {
     return products.filter((p) => p.featured);
   };
 
-  const getFavoriteProducts = () => {
-    return products.filter((p) => p.favorite);
-  };
-
-  const toggleFavorite = (id: string) => {
-    // TODO: toggleFavorite logic
-  };
-
   return {
     products,
     loading,
     error,
     getProductsByCategory,
     getFeaturedProducts,
-    getFavoriteProducts,
-    toggleFavorite,
   };
 };

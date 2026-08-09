@@ -1,6 +1,9 @@
 import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
+import { Heart } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { useFavorites } from "@/context/FavoritesContext";
+import { Button } from "@/components/ui/button";
 import { Product, categories } from "@/lib/products";
 import { getLang } from "@/lib/get-lang.ts";
 import { formatPrice } from "@/lib/utils";
@@ -14,6 +17,7 @@ export const ProductCard = ({ product, index = 0 }: ProductCardProps) => {
   const location = useLocation();
   const { i18n } = useTranslation();
   const lang = getLang(i18n.language);
+  const { isFavorite, toggleFavorite } = useFavorites();
 
   return (
     <motion.article
@@ -31,6 +35,17 @@ export const ProductCard = ({ product, index = 0 }: ProductCardProps) => {
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/5 transition-colors duration-300" />
+          <Button
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              toggleFavorite(product.id);
+            }}
+            className="absolute top-3 right-3 z-10 p-2 rounded-full aspect-square bg-background/80 transition-colors"
+            aria-label="Toggle favorite"
+          >
+            <Heart className={`h-4 w-4 ${isFavorite(product.id) ? "fill-rose-500" : ""}`} />
+          </Button>
         </div>
       </Link>
       

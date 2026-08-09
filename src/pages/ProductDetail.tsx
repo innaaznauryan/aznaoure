@@ -1,11 +1,13 @@
 import { useParams, Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Heart } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import SEO from "@/components/SEO.tsx";
+import { Button } from "@/components/ui/button";
 import { ProductCard } from "@/components/products/ProductCard";
 import { ProductImageViewer } from "@/components/products/ProductImageViewer";
 import { ProductNotFound } from "@/components/products/ProductNotFound";
+import { useFavorites } from "@/context/FavoritesContext";
 import { useProducts } from "@/hooks/use-products.ts";
 import { useProduct } from "@/hooks/use-product.ts";
 import { categories } from "@/lib/products.ts";
@@ -19,6 +21,7 @@ const ProductDetail = () => {
   const lang = getLang(i18n.language);
   const { getFeaturedProducts, loading: productsLoading, error: productsError } = useProducts();
   const { product, loading: productLoading, error: productError } = useProduct(id);
+  const { isFavorite, toggleFavorite } = useFavorites();
 
   const loading = productsLoading || productLoading;
   const error = productsError || productError;
@@ -113,16 +116,16 @@ const ProductDetail = () => {
                 </ul>
               </div>
 
-              {/*<div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-auto">*/}
-              {/*  <Button*/}
-              {/*    variant="luxuryOutline"*/}
-              {/*    size="lg"*/}
-              {/*    className="sm:size-xl sm:flex-shrink-0"*/}
-              {/*    onClick={() => toggleFavorite(id)}*/}
-              {/*  >*/}
-              {/*    <Heart className={`h-4 w-4 sm:h-5 sm:w-5 ${product.favorite ? 'fill-gold' : ''}`} />*/}
-              {/*  </Button>*/}
-              {/*</div>*/}
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-auto">
+                <Button
+                  variant="luxuryOutline"
+                  size="lg"
+                  className="sm:size-xl sm:flex-shrink-0"
+                  onClick={() => toggleFavorite(product.id)}
+                >
+                  <Heart className={`h-4 w-4 sm:h-5 sm:w-5 ${isFavorite(product.id) ? "fill-rose-500" : ""}`} />
+                </Button>
+              </div>
             </motion.div>
           </div>
         </div>

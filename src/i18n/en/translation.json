@@ -43,8 +43,10 @@
     "all": "All"
   },
   "favorites": {
-    "title": "Your Treasured Picks",
-    "description": "A curated collection of the pieces you love most."
+    "save": "Save to favorites",
+    "description": "Sign in or create an account to save your favorites and revisit them anytime.",
+    "cancel": "Cancel",
+    "signIn": "Sign in"
   },
   "about": {
     "title": "About Us",
