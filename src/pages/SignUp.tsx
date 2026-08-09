@@ -19,6 +19,7 @@ interface FieldErrors {
   email?: string;
   phone?: string;
   password?: string;
+  confirmPassword?: string;
 }
 
 export default function SignUp() {
@@ -28,6 +29,7 @@ export default function SignUp() {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { login: setAuth } = useAuth();
@@ -53,6 +55,14 @@ export default function SignUp() {
     if (emailError) errors.email = emailError;
     if (phoneError) errors.phone = phoneError;
     if (passwordError) errors.password = passwordError;
+
+    if (!passwordError) {
+      if (!confirmPassword) {
+        errors.confirmPassword = 'required';
+      } else if (confirmPassword !== password) {
+        errors.confirmPassword = 'passwordMismatch';
+      }
+    }
 
     setFieldErrors(errors);
     return Object.keys(errors).length === 0;
@@ -186,6 +196,24 @@ export default function SignUp() {
             />
             {fieldErrors.password && (
               <p className="text-sm text-destructive mt-1">{t(`validation.${fieldErrors.password}`)}</p>
+            )}
+          </div>
+
+          <div>
+            <Label htmlFor="confirmPassword">{t('signUp.confirmPassword.label')}</Label>
+            <Input
+              id="confirmPassword"
+              name="confirmPassword"
+              type="password"
+              autoComplete="new-password"
+              placeholder={t('signUp.confirmPassword.placeholder')}
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              aria-invalid={!!fieldErrors.confirmPassword}
+              className="mt-2"
+            />
+            {fieldErrors.confirmPassword && (
+              <p className="text-sm text-destructive mt-1">{t(`validation.${fieldErrors.confirmPassword}`)}</p>
             )}
           </div>
 

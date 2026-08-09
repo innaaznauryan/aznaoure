@@ -157,6 +157,7 @@
     "email": { "label": "Email", "placeholder": "you@example.com" },
     "phone": { "label": "Phone", "placeholder": "(+374) 00 000 000" },
     "password": { "label": "Password", "placeholder": "At least 8 characters" },
+    "confirmPassword": { "label":  "Confirm Password", "placeholder":  "Re-enter your password" },
     "submit": "Sign Up",
     "submitting": "Creating account...",
     "haveAccount": "Already have an account?",
@@ -166,6 +167,7 @@
     "required": "This field is required",
     "invalidEmail": "Please enter a valid email address",
     "passwordTooShort": "Password must be at least 8 characters",
+    "passwordMismatch": "Passwords do not match",
     "invalidPhone": "Please enter a valid phone number"
   },
   "authErrors": {

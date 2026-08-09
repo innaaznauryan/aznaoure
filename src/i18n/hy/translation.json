@@ -157,6 +157,7 @@
     "email": { "label": "Էլ. հասցե", "placeholder": "you@example.com" },
     "phone": { "label": "Հեռախոսահամար", "placeholder": "(+374) 00 000 000" },
     "password": { "label": "Գաղտնաբառ", "placeholder": "Առնվազն 8 նիշ" },
+    "confirmPassword": { "label":  "Հաստատել գաղտնաբառը", "placeholder": "Կրկին մուտքագրեք գաղտնաբառը" },
     "submit": "Գրանցվել",
     "submitting": "Հաշիվը ստեղծվում է...",
     "haveAccount": "Արդեն ունե՞ք հաշիվ",
@@ -166,6 +167,7 @@
     "required": "Այս դաշտը պարտադիր է",
     "invalidEmail": "Խնդրում ենք մուտքագրել վավեր էլ. հասցե",
     "passwordTooShort": "Գաղտնաբառը պետք է պարունակի առնվազն 8 նիշ",
+    "passwordMismatch": "Գաղտնաբառերը չեն համընկնում",
     "invalidPhone": "Խնդրում ենք մուտքագրել վավեր հեռախոսահամար"
   },
   "authErrors": {
