@@ -10,17 +10,18 @@ const ProfileFavorites = () => {
   const { t } = useTranslation();
   const { isFavorite } = useFavorites();
 
-  const [favoriteProducts, setFavoriteProducts] = useState<Product[]>([]);
+  const [allFavoriteProducts, setAllFavoriteProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    setLoading(true);
     fetchFavorites()
-      .then(setFavoriteProducts)
+      .then(setAllFavoriteProducts)
       .catch(() => setError(t("products.failedToFetch")))
       .finally(() => setLoading(false));
-  }, [isFavorite, t]);
+  }, [t]);
+
+  const favoriteProducts = allFavoriteProducts.filter((p) => isFavorite(p.id));
 
   return (
     <div className="min-h-screen">
