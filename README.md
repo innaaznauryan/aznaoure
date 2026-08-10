@@ -1,65 +1,80 @@
-# Welcome to Aznaoure Art's Website Repository
+# Aznaoure Art - Frontend
 
-## Project info
+**Your Story in a Piece of Jewelry.**
 
-**URL**: https://www.aznaoure.com/
+TypeScript/React.js frontend for Aznaoure Art, an Armenian heritage jewelry brand.  
+Live website: [www.aznaoure.com](https://www.aznaoure.com).  
+Backend repo: `aznaoure-backend`.
 
-## How can I edit this code?
+## Tech Stack
 
-**Use your preferred IDE**
+| Layer | Technology |
+|---|---|
+| Framework | React 18 + TypeScript, built with Vite |
+| Styling | Tailwind CSS + shadcn/ui (Radix UI primitives) |
+| Routing | React Router v6 |
+| Animation | Framer Motion |
+| Forms & Validation | React Hook Form |
+| Data Fetching / Caching | TanStack Query (React Query) |
+| Internationalization | i18next + react-i18next (Armenian + English) |
+| SEO | react-helmet-async |
+| Auth | JWT (email/password) + Google OAuth (`@react-oauth/google`) |
+| Notifications | Sonner (toasts) |
+| Testing | Vitest + Testing Library |
+| Hosting | Vercel |
 
-If you want to work locally using your own IDE, you can clone this repo and push changes.
+The backend is a separate FastAPI + SQLAlchemy + Alembic service (see `aznaoure-backend`).
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## Getting Started
 
-Follow these steps:
+### Prerequisites
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+- Node.js 18+
+- npm
+- Access to the backend API (local instance or the hosted dev backend)
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### Installation
 
-# Step 3: Install the necessary dependencies.
-npm i
+```bash
+git clone https://github.com/innaaznauryan/aznaoure-frontend.git
+cd aznaoure-frontend
+npm install
+```
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+### Environment Variables
+Create an `.env` file in the project root, using the configs below as a reference:
+
+```env
+VITE_CLIENT_URL=http://localhost:8080
+VITE_API_URL=http://localhost:8000
+VITE_FORMSPREE_ENDPOINT=https://formspree.io/f/xxxxxxxx
+VITE_GOOGLE_CLIENT_ID=xxxx...apps.googleusercontent.com
+```
+
+### Run Locally
+
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The app runs on `http://localhost:8080` by default and expects the backend API to be reachable at `VITE_API_URL`.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Core Features
 
-**Use GitHub Codespaces**
+### Authentication
+- Email/password and Google OAuth sign-in, with Google accounts linking to existing password accounts by email match.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### Favorites
+- Heart-button overlay on `ProductCard.tsx` to save/unsave products.
 
-## What technologies are used for this project?
+### Internationalization (i18n)
+- Full Armenian (Eastern Armenian dialect) and English support via i18next.
 
-This project is built with:
+### SEO
+- `SEO.tsx` is a reusable component applying per-route dynamic meta tags via `react-helmet-async`.
+- Public pages (home, product, collection pages) get full Open Graph tags + canonical URLs.
+- Auth/account pages are set to `noindex`.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## Deployment
 
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+The app is deployed on **Vercel**, connected to both the `dev` and `main` branches for automatic preview and production deployments respectively.
