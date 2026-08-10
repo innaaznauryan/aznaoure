@@ -14,6 +14,7 @@ interface AuthContextType {
   isAuthenticated: boolean;
   login: (token: string, user: User) => void;
   logout: () => void;
+  updateUser: (user: User) => void;
   isLoading: boolean;
 }
 
@@ -48,8 +49,21 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     setUser(null);
   };
 
+  const updateUser = (updatedUser: User) => {
+    localStorage.setItem('aznaoure_user', JSON.stringify(updatedUser));
+    setUser(updatedUser);
+  };
+
   return (
-    <AuthContext.Provider value={{ user, token, isAuthenticated: !!token, login, logout, isLoading }}>
+    <AuthContext.Provider value={{
+      user,
+      token,
+      isAuthenticated: !!token,
+      login,
+      logout,
+      updateUser,
+      isLoading
+    }}>
       {children}
     </AuthContext.Provider>
   );

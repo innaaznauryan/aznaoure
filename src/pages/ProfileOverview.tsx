@@ -1,10 +1,14 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { useAuth } from "@/context/AuthContext";
+import { Button } from "@/components/ui/button";
+import EditProfileModal from "@/components/auth/EditProfileModal";
 
 export default function ProfileOverview() {
   const { t } = useTranslation();
   const { user } = useAuth();
+  const [editOpen, setEditOpen] = useState(false);
 
   return (
     <motion.div
@@ -41,6 +45,11 @@ export default function ProfileOverview() {
           <p className="text-base sm:text-lg">{user?.phone || "—"}</p>
         </div>
       </div>
+      <Button variant="outline" className="mt-6" onClick={() => setEditOpen(true)}>
+        {t("profile.edit")}
+      </Button>
+
+      <EditProfileModal open={editOpen} onOpenChange={setEditOpen} />
     </motion.div>
   );
 }

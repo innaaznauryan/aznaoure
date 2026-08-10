@@ -138,7 +138,12 @@
     "heading": "Account Details",
     "name": "Name",
     "email": "Email",
-    "phone": "Phone"
+    "phone": "Phone",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "edit": "Edit Profile",
+    "save": "Save Changes",
+    "saving": "Saving"
   },
   "signIn": {
     "title": "Sign In",

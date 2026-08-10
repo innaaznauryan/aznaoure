@@ -22,3 +22,7 @@ export function validatePhone(phone: string): string | null {
   if (!phoneRegex.test(phone)) return "invalidPhone";
   return null;
 }
+
+export function normalizeWhitespace(value: string): string {
+  return value.trim().replace(/\s+/g, " ");
+}
