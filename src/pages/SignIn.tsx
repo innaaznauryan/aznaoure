@@ -1,17 +1,20 @@
-import { useState } from 'react';
-import { useNavigate, Link, useLocation } from 'react-router-dom';
+import { useMemo, useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
-import { Label } from '@/components/ui/label';
-import { Input } from '@/components/ui/input';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { Button } from '@/components/ui/button';
+import { Form } from '@/components/ui/form';
 import SEO from "@/components/SEO.tsx";
 import GoogleAuthButton from "@/components/auth/GoogleAuthButton";
 import AuthDivider from "@/components/auth/AuthDivider";
+import AuthFormField from "@/components/auth/AuthFormField";
 import { useAuth } from '../context/AuthContext';
 import { useGoogleAuth } from "@/hooks/use-google-auth";
 import { login, ApiError } from "@/lib/api";
-import { validateEmail, validateRequired } from '@/lib/validation';
+import { createSignInSchema, type SignInFormData } from '@/lib/authSchemas';
 
 interface LocationState {
   from?: Location;
@@ -19,10 +22,8 @@ interface LocationState {
 
 export default function SignIn() {
   const { t } = useTranslation();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [fieldErrors, setFieldErrors] = useState<{ email?: string; password?: string }>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [serverError, setServerError] = useState('');
   const { login: setAuth } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
@@ -35,29 +36,24 @@ export default function SignIn() {
     setFormError,
   } = useGoogleAuth(from);
 
-  const validate = () => {
-    const errors: { email?: string; password?: string } = {};
-    const emailError = validateEmail(email);
-    const passwordError = validateRequired(password);
-    if (emailError) errors.email = emailError;
-    if (passwordError) errors.password = passwordError;
-    setFieldErrors(errors);
-    return Object.keys(errors).length === 0;
-  };
+  const signInSchema = useMemo(() => createSignInSchema(t), [t]);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const form = useForm<SignInFormData>({
+    resolver: zodResolver(signInSchema),
+    defaultValues: { email: '', password: '' },
+  });
+
+  const onSubmit = async (data: SignInFormData) => {
     setFormError('');
-    if (!validate()) return;
-
+    setServerError('');
     setIsSubmitting(true);
     try {
-      const data = await login({ email, password });
-      setAuth(data.access_token, data.user);
+      const result = await login({ email: data.email, password: data.password });
+      setAuth(result.access_token, result.user);
       navigate(from, { replace: true });
     } catch (err) {
       const code = err instanceof ApiError ? err.code : 'network_error';
-      setFormError(t(`authErrors.${code}`));
+      setServerError(t(`authErrors.${code}`));
     } finally {
       setIsSubmitting(false);
     }
@@ -81,56 +77,41 @@ export default function SignIn() {
           {t('signIn.title')}
         </h2>
 
-        <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
-          <div>
-            <Label htmlFor="email">{t('signIn.email.label')}</Label>
-            <Input
-              id="email"
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 sm:space-y-6">
+            <AuthFormField
+              control={form.control}
               name="email"
-              type="text"
-              inputMode="email"
-              autoComplete="email"
+              label={t('signIn.email.label')}
               placeholder={t('signIn.email.placeholder')}
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              aria-invalid={!!fieldErrors.email}
-              className="mt-2"
+              inputMode="email"
+              autoComplete="username email"
             />
-            {fieldErrors.email && (
-              <p className="text-sm text-destructive mt-1">{t(`validation.${fieldErrors.email}`)}</p>
-            )}
-          </div>
 
-          <div>
-            <Label htmlFor="password">{t('signIn.password.label')}</Label>
-            <Input
-              id="password"
+            <AuthFormField
+              control={form.control}
               name="password"
+              label={t('signIn.password.label')}
+              placeholder={t('signIn.password.placeholder')}
               type="password"
               autoComplete="current-password"
-              placeholder={t('signIn.password.placeholder')}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              aria-invalid={!!fieldErrors.password}
-              className="mt-2"
             />
-            {fieldErrors.password && (
-              <p className="text-sm text-destructive mt-1">{t(`validation.${fieldErrors.password}`)}</p>
+
+            {(formError || serverError) && (
+              <p className="text-sm text-destructive">{formError || serverError}</p>
             )}
-          </div>
 
-          {formError && <p className="text-sm text-destructive">{formError}</p>}
-
-          <Button
-            type="submit"
-            variant="luxury"
-            size="lg"
-            className="sm:size-xl w-full"
-            disabled={isSubmitting}
-          >
-            {isSubmitting ? t('signIn.submitting') : t('signIn.submit')}
-          </Button>
-        </form>
+            <Button
+              type="submit"
+              variant="luxury"
+              size="lg"
+              className="sm:size-xl w-full"
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? t('signIn.submitting') : t('signIn.submit')}
+            </Button>
+          </form>
+        </Form>
 
         <AuthDivider />
 

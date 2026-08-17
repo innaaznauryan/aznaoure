@@ -1,37 +1,24 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
-import { Label } from '@/components/ui/label';
-import { Input } from '@/components/ui/input';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { Button } from '@/components/ui/button';
+import { Form } from '@/components/ui/form';
 import SEO from "@/components/SEO.tsx";
 import GoogleAuthButton from "@/components/auth/GoogleAuthButton";
 import AuthDivider from "@/components/auth/AuthDivider";
+import AuthFormField from "@/components/auth/AuthFormField";
 import { useAuth } from '../context/AuthContext';
 import { useGoogleAuth } from "@/hooks/use-google-auth";
 import { signup, ApiError } from "@/lib/api";
-import { validateEmail, validatePassword, validateRequired, validatePhone } from '@/lib/validation';
-
-interface FieldErrors {
-  firstName?: string;
-  lastName?: string;
-  email?: string;
-  phone?: string;
-  password?: string;
-  confirmPassword?: string;
-}
+import { createSignUpSchema, type SignUpFormData } from '@/lib/authSchemas';
 
 export default function SignUp() {
   const { t } = useTranslation();
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [serverError, setServerError] = useState('');
   const { login: setAuth } = useAuth();
   const navigate = useNavigate();
 
@@ -42,51 +29,37 @@ export default function SignUp() {
     setFormError,
   } = useGoogleAuth();
 
-  const validate = () => {
-    const errors: FieldErrors = {};
-    const firstNameError = validateRequired(firstName);
-    const lastNameError = validateRequired(lastName);
-    const emailError = validateEmail(email);
-    const phoneError = validatePhone(phone);
-    const passwordError = validatePassword(password);
+  const signUpSchema = useMemo(() => createSignUpSchema(t), [t]);
 
-    if (firstNameError) errors.firstName = firstNameError;
-    if (lastNameError) errors.lastName = lastNameError;
-    if (emailError) errors.email = emailError;
-    if (phoneError) errors.phone = phoneError;
-    if (passwordError) errors.password = passwordError;
+  const form = useForm<SignUpFormData>({
+    resolver: zodResolver(signUpSchema),
+    defaultValues: {
+      firstName: '',
+      lastName: '',
+      email: '',
+      phone: '',
+      password: '',
+      confirmPassword: '',
+    },
+  });
 
-    if (!passwordError) {
-      if (!confirmPassword) {
-        errors.confirmPassword = 'required';
-      } else if (confirmPassword !== password) {
-        errors.confirmPassword = 'passwordMismatch';
-      }
-    }
-
-    setFieldErrors(errors);
-    return Object.keys(errors).length === 0;
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const onSubmit = async (data: SignUpFormData) => {
     setFormError('');
-    if (!validate()) return;
-
+    setServerError('');
     setIsSubmitting(true);
     try {
-      const data = await signup({
-        email,
-        password,
-        first_name: firstName,
-        last_name: lastName,
-        phone,
+      const result = await signup({
+        email: data.email,
+        password: data.password,
+        first_name: data.firstName,
+        last_name: data.lastName,
+        phone: data.phone,
       });
-      setAuth(data.access_token, data.user);
+      setAuth(result.access_token, result.user);
       navigate('/', { replace: true });
     } catch (err) {
       const code = err instanceof ApiError ? err.code : 'network_error';
-      setFormError(t(`authErrors.${code}`));
+      setServerError(t(`authErrors.${code}`));
     } finally {
       setIsSubmitting(false);
     }
@@ -109,126 +82,74 @@ export default function SignUp() {
           {t('signUp.title')}
         </h2>
 
-        <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
-          <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
-            <div>
-              <Label htmlFor="firstName">{t('signUp.firstName.label')}</Label>
-              <Input
-                id="firstName"
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 sm:space-y-6">
+            <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
+              <AuthFormField
+                control={form.control}
                 name="firstName"
+                label={t('signUp.firstName.label')}
                 placeholder={t('signUp.firstName.placeholder')}
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
-                aria-invalid={!!fieldErrors.firstName}
-                className="mt-2"
               />
-              {fieldErrors.firstName && (
-                <p className="text-sm text-destructive mt-1">{t(`validation.${fieldErrors.firstName}`)}</p>
-              )}
-            </div>
-            <div>
-              <Label htmlFor="lastName">{t('signUp.lastName.label')}</Label>
-              <Input
-                id="lastName"
+              <AuthFormField
+                control={form.control}
                 name="lastName"
+                label={t('signUp.lastName.label')}
                 placeholder={t('signUp.lastName.placeholder')}
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
-                aria-invalid={!!fieldErrors.lastName}
-                className="mt-2"
               />
-              {fieldErrors.lastName && (
-                <p className="text-sm text-destructive mt-1">{t(`validation.${fieldErrors.lastName}`)}</p>
-              )}
             </div>
-          </div>
 
-          <div>
-            <Label htmlFor="email">{t('signUp.email.label')}</Label>
-            <Input
-              id="email"
+            <AuthFormField
+              control={form.control}
               name="email"
-              type="text"
-              inputMode="email"
-              autoComplete="email"
+              label={t('signUp.email.label')}
               placeholder={t('signUp.email.placeholder')}
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              aria-invalid={!!fieldErrors.email}
-              className="mt-2"
+              inputMode="email"
+              autoComplete="username email"
             />
-            {fieldErrors.email && (
-              <p className="text-sm text-destructive mt-1">{t(`validation.${fieldErrors.email}`)}</p>
-            )}
-          </div>
 
-          <div>
-            <Label htmlFor="phone">{t('signUp.phone.label')}</Label>
-            <Input
-              id="phone"
+            <AuthFormField
+              control={form.control}
               name="phone"
-              type="text"
+              label={t('signUp.phone.label')}
+              placeholder={t('signUp.phone.placeholder')}
               inputMode="tel"
               autoComplete="tel"
-              placeholder={t('signUp.phone.placeholder')}
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-              aria-invalid={!!fieldErrors.phone}
-              className="mt-2"
             />
-            {fieldErrors.phone && (
-              <p className="text-sm text-destructive mt-1">{t(`validation.${fieldErrors.phone}`)}</p>
-            )}
-          </div>
 
-          <div>
-            <Label htmlFor="password">{t('signUp.password.label')}</Label>
-            <Input
-              id="password"
+            <AuthFormField
+              control={form.control}
               name="password"
-              type="password"
-              autoComplete="new-password"
+              label={t('signUp.password.label')}
               placeholder={t('signUp.password.placeholder')}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              aria-invalid={!!fieldErrors.password}
-              className="mt-2"
-            />
-            {fieldErrors.password && (
-              <p className="text-sm text-destructive mt-1">{t(`validation.${fieldErrors.password}`)}</p>
-            )}
-          </div>
-
-          <div>
-            <Label htmlFor="confirmPassword">{t('signUp.confirmPassword.label')}</Label>
-            <Input
-              id="confirmPassword"
-              name="confirmPassword"
               type="password"
               autoComplete="new-password"
-              placeholder={t('signUp.confirmPassword.placeholder')}
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              aria-invalid={!!fieldErrors.confirmPassword}
-              className="mt-2"
             />
-            {fieldErrors.confirmPassword && (
-              <p className="text-sm text-destructive mt-1">{t(`validation.${fieldErrors.confirmPassword}`)}</p>
+
+            <AuthFormField
+              control={form.control}
+              name="confirmPassword"
+              label={t('signUp.confirmPassword.label')}
+              placeholder={t('signUp.confirmPassword.placeholder')}
+              type="password"
+              autoComplete="new-password"
+            />
+
+            {(formError || serverError) && (
+              <p className="text-sm text-destructive">{formError || serverError}</p>
             )}
-          </div>
 
-          {formError && <p className="text-sm text-destructive">{formError}</p>}
-
-          <Button
-            type="submit"
-            variant="luxury"
-            size="lg"
-            className="sm:size-xl w-full"
-            disabled={isSubmitting}
-          >
-            {isSubmitting ? t('signUp.submitting') : t('signUp.submit')}
-          </Button>
-        </form>
+            <Button
+              type="submit"
+              variant="luxury"
+              size="lg"
+              className="sm:size-xl w-full"
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? t('signUp.submitting') : t('signUp.submit')}
+            </Button>
+          </form>
+        </Form>
 
         <AuthDivider />
 
