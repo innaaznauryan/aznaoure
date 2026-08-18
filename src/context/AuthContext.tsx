@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { fetchCurrentUser } from "@/lib/api.ts";
 
 interface User {
   id: number;
@@ -26,31 +27,43 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const storedToken = localStorage.getItem('aznaoure_token');
-    const storedUser = localStorage.getItem('aznaoure_user');
-    if (storedToken && storedUser) {
-      setToken(storedToken);
-      setUser(JSON.parse(storedUser));
-    }
-    setIsLoading(false);
+    loadSession();
   }, []);
+
+  async function loadSession() {
+    const storedToken = localStorage.getItem('aznaoure_token');
+    if (!storedToken) {
+      setIsLoading(false);
+      return;
+    }
+
+    setToken(storedToken);
+
+    try {
+      const currentUser = await fetchCurrentUser();
+      setUser(currentUser);
+    } catch {
+      localStorage.removeItem('aznaoure_token');
+      setToken(null);
+      setUser(null);
+    } finally {
+      setIsLoading(false);
+    }
+  }
 
   const login = (newToken: string, newUser: User) => {
     localStorage.setItem('aznaoure_token', newToken);
-    localStorage.setItem('aznaoure_user', JSON.stringify(newUser));
     setToken(newToken);
     setUser(newUser);
   };
 
   const logout = () => {
     localStorage.removeItem('aznaoure_token');
-    localStorage.removeItem('aznaoure_user');
     setToken(null);
     setUser(null);
   };
 
   const updateUser = (updatedUser: User) => {
-    localStorage.setItem('aznaoure_user', JSON.stringify(updatedUser));
     setUser(updatedUser);
   };
 

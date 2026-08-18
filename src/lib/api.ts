@@ -26,7 +26,6 @@ async function apiFetch(url: string, options: RequestInit = {}) {
     });
     if (response.status === 401) {
         localStorage.removeItem("aznaoure_token");
-        localStorage.removeItem("aznaoure_user");
         if (!window.location.pathname.startsWith("/signin")) {
             window.location.href = "/signin?sessionExpired=1";
         }
@@ -152,6 +151,12 @@ export async function googleAuth(credential: string) {
         throw new ApiError(code);
     }
 
+    return response.json();
+}
+
+export async function fetchCurrentUser() {
+    const response = await apiFetch(`${BASE_URL}/api/users/me`);
+    if (!response.ok) throw new Error("Failed to fetch current user");
     return response.json();
 }
 

@@ -178,6 +178,7 @@
   "authErrors": {
     "network_error": "Unable to connect. Please check your internet connection and try again.",
     "invalid_credentials": "Incorrect email or password.",
+    "invalid_google_token": "Invalid Google token. Please try signing in with Google again.",
     "email_already_exists": "An account with this email already exists.",
     "validation_error": "Please check your information and try again.",
     "server_error": "Something went wrong on our end. Please try again shortly.",
