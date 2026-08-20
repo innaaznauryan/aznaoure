@@ -181,3 +181,51 @@ export async function updateProfile(data: {
     }
     return response.json();
 }
+
+export async function forgotPassword(email: string) {
+    let response: Response;
+    try {
+        response = await fetch(`${BASE_URL}/api/auth/forgot-password`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email }),
+        });
+    } catch {
+        throw new ApiError('network_error');
+    }
+    if (!response.ok) {
+        let code = 'server_error';
+        try {
+            const err = await response.json();
+            code = err.detail?.code || code;
+        } catch {
+            // response wasn't JSON, keep server_error fallback
+        }
+        throw new ApiError(code);
+    }
+    return response.json();
+}
+
+export async function resetPassword(data: { token: string; new_password: string }) {
+    let response: Response;
+    try {
+        response = await fetch(`${BASE_URL}/api/auth/reset-password`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data),
+        });
+    } catch {
+        throw new ApiError('network_error');
+    }
+    if (!response.ok) {
+        let code = 'server_error';
+        try {
+            const err = await response.json();
+            code = err.detail?.code || code;
+        } catch {
+            // response wasn't JSON, keep server_error fallback
+        }
+        throw new ApiError(code);
+    }
+    return response.json();
+}

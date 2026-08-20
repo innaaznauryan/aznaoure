@@ -97,6 +97,12 @@ export default function SignIn() {
               autoComplete="current-password"
             />
 
+            <div className="text-right">
+              <Link to="/forgot-password" className="text-sm underline text-muted-foreground">
+                {t('signIn.forgotPassword')}
+              </Link>
+            </div>
+
             {(formError || serverError) && (
               <p className="text-sm text-destructive">{formError || serverError}</p>
             )}

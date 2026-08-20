@@ -152,6 +152,7 @@
     "submit": "Sign In",
     "submitting": "Signing in...",
     "noAccount": "Don't have an account?",
+    "forgotPassword": "Forgot password?",
     "signUpLink": "Sign up",
     "orContinueWith": "Or continue with"
   },
@@ -175,6 +176,24 @@
     "passwordMismatch": "Passwords do not match",
     "invalidPhone": "Please enter a valid phone number"
   },
+  "forgotPassword": {
+    "title": "Forgot your password?",
+    "instructions": "Enter your email and we'll send you a link to reset your password.",
+    "email": { "label": "Email", "placeholder": "you@example.com" },
+    "submit": "Send reset link",
+    "submitting": "Sending...",
+    "checkEmail": "If an account exists with that email, we've sent a reset link. Check your inbox.",
+    "backToSignIn": "Back to sign in"
+  },
+  "resetPassword": {
+    "title": "Reset your password",
+    "password": { "label": "New password", "placeholder": "Enter your password" },
+    "confirmPassword": { "label": "Confirm new password", "placeholder": "Enter your password" },
+    "submit": "Reset password",
+    "submitting": "Resetting...",
+    "invalidLink": "This reset link is invalid or has expired.",
+    "requestNewLink": "Request a new link"
+  },
   "authErrors": {
     "network_error": "Unable to connect. Please check your internet connection and try again.",
     "invalid_credentials": "Incorrect email or password.",
@@ -182,7 +201,8 @@
     "email_already_exists": "An account with this email already exists.",
     "validation_error": "Please check your information and try again.",
     "server_error": "Something went wrong on our end. Please try again shortly.",
-    "rate_limited": "Too many attempts. Please wait a moment and try again."
+    "rate_limited": "Too many attempts. Please wait a moment and try again.",
+    "invalid_reset_token": "This reset link is invalid or has expired."
   },
   "404": {
     "notFound": "Oops! Page not found",

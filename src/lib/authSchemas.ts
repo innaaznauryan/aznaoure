@@ -76,5 +76,40 @@ export function createSignUpSchema(t: TFunction) {
     });
 }
 
+export function createForgotPasswordSchema(t: TFunction) {
+  return z
+    .object({
+      email: z.string(),
+    })
+    .superRefine((data, ctx) => {
+      applyEmail(t, data.email, 'email', ctx);
+    });
+}
+
+export function createResetPasswordSchema(t: TFunction) {
+  return z
+    .object({
+      password: z.string(),
+      confirmPassword: z.string(),
+    })
+    .superRefine((data, ctx) => {
+      const passwordOk = applyPassword(t, data.password, 'password', ctx);
+
+      if (passwordOk) {
+        if (!data.confirmPassword) {
+          ctx.addIssue({code: z.ZodIssueCode.custom, path: ['confirmPassword'], message: t('validation.required')});
+        } else if (data.confirmPassword !== data.password) {
+          ctx.addIssue({
+            code: z.ZodIssueCode.custom,
+            path: ['confirmPassword'],
+            message: t('validation.passwordMismatch')
+          });
+        }
+      }
+    });
+}
+
+export type ForgotPasswordFormData = z.infer<ReturnType<typeof createForgotPasswordSchema>>;
+export type ResetPasswordFormData = z.infer<ReturnType<typeof createResetPasswordSchema>>;
 export type SignInFormData = z.infer<ReturnType<typeof createSignInSchema>>;
 export type SignUpFormData = z.infer<ReturnType<typeof createSignUpSchema>>;
