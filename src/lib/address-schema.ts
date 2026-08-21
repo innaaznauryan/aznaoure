@@ -1,21 +1,7 @@
 import { useMemo } from "react";
 import { z } from "zod";
 import type { TFunction } from "i18next";
-import { validateRequired, validatePhone } from "@/lib/validation";
-
-type IssueCtx = z.RefinementCtx;
-
-function applyRequired(t: TFunction, value: string, path: string, ctx: IssueCtx) {
-  const code = validateRequired(value);
-  if (code) ctx.addIssue({ code: z.ZodIssueCode.custom, path: [path], message: t(`validation.${code}`) });
-  return !code;
-}
-
-function applyPhone(t: TFunction, value: string, path: string, ctx: IssueCtx) {
-  const code = validatePhone(value);
-  if (code) ctx.addIssue({ code: z.ZodIssueCode.custom, path: [path], message: t(`validation.${code}`) });
-  return !code;
-}
+import { applyRequired, applyPhone } from "@/lib/validation";
 
 export function createAddressSchema(t: TFunction) {
   return z

@@ -10,7 +10,7 @@ import SEO from "@/components/SEO.tsx";
 import AuthFormField from "@/components/auth/AuthFormField";
 import { ApiError } from "@/api/client.ts";
 import { forgotPassword } from "@/api/auth.ts";
-import { createForgotPasswordSchema, type ForgotPasswordFormData } from '@/lib/authSchemas';
+import { createForgotPasswordSchema, type ForgotPasswordFormData } from '@/lib/auth-schema.ts';
 
 export default function ForgotPassword() {
   const { t } = useTranslation();

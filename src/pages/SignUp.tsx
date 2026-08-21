@@ -14,7 +14,7 @@ import { useAuth } from '../context/AuthContext';
 import { useGoogleAuth } from "@/hooks/use-google-auth";
 import { ApiError } from "@/api/client.ts";
 import { signup } from "@/api/auth.ts";
-import { createSignUpSchema, type SignUpFormData } from '@/lib/authSchemas';
+import { createSignUpSchema, type SignUpFormData } from '@/lib/auth-schema.ts';
 
 export default function SignUp() {
   const { t } = useTranslation();

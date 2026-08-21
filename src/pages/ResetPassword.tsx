@@ -10,7 +10,7 @@ import SEO from "@/components/SEO.tsx";
 import AuthFormField from "@/components/auth/AuthFormField";
 import { ApiError } from "@/api/client.ts";
 import { resetPassword } from "@/api/auth.ts";
-import { createResetPasswordSchema, type ResetPasswordFormData } from '@/lib/authSchemas';
+import { createResetPasswordSchema, type ResetPasswordFormData } from '@/lib/auth-schema.ts';
 
 export default function ResetPassword() {
   const { t } = useTranslation();

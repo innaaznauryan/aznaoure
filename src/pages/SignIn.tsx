@@ -15,7 +15,7 @@ import { useAuth } from '../context/AuthContext';
 import { useGoogleAuth } from "@/hooks/use-google-auth";
 import { ApiError } from "@/api/client.ts";
 import { login } from "@/api/auth.ts";
-import { createSignInSchema, type SignInFormData } from '@/lib/authSchemas';
+import { createSignInSchema, type SignInFormData } from '@/lib/auth-schema.ts';
 
 interface LocationState {
   from?: Location;

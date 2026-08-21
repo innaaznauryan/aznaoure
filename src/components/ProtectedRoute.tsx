@@ -6,7 +6,11 @@ export default function ProtectedRoute({ children }: { children: JSX.Element }) 
   const { isAuthenticated, isLoading } = useAuth();
   const location = useLocation();
 
-  if (isLoading) return <Spinner />;
+  if (isLoading) return (
+    <div className="flex justify-center items-center py-16">
+      <Spinner />
+    </div>
+  );
   if (!isAuthenticated) {
     return <Navigate to="/signin" state={{ from: location }} replace />;
   }
