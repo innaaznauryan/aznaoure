@@ -121,7 +121,7 @@
   "products": {
     "noProducts": "No products found in this category.",
     "notFound": "Product Not Found",
-    "failedToFetch": "Failed to fetch.",
+    "failedToFetch": "Failed to fetch products. Please check your internet connection and try again.",
     "back": "Back to Collections",
     "details": "Details",
     "alsoLike": "You May Also Like",
@@ -143,6 +143,34 @@
     "lastName": "Last Name",
     "edit": "Edit Profile",
     "save": "Save Changes",
+    "saving": "Saving"
+  },
+  "address": {
+    "errors": {
+      "failedToFetch": "Failed to fetch addresses. Please check your internet connection and try again.",
+      "createFailed": "Failed to save address. Please try again.",
+      "deleteFailed": "Failed to delete address. Please try again."
+    },
+    "fields": {
+      "phone": "Phone number",
+      "address": "Address",
+      "city": "City",
+      "zipCode": "ZIP code",
+      "country": "Country",
+      "setDefault": "Set as default address"
+    },
+    "list": {
+      "title": "Saved addresses",
+      "addNew": "Add address",
+      "empty": "You haven't saved any addresses yet.",
+      "default": "Default"
+    },
+    "addNew": "Add new address",
+    "deleteAddress": "Delete this address?",
+    "deleteDesc": "This address will be permanently removed from your account.",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
     "saving": "Saving"
   },
   "signIn": {

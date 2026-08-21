@@ -21,7 +21,8 @@ import ForgotPassword from "@/pages/ForgotPassword";
 import ResetPassword from "@/pages/ResetPassword";
 import ProfileLayout from './pages/ProfileLayout';
 import ProfileOverview from './pages/ProfileOverview';
-import Favorites from './pages/ProfileFavorites';
+import ProfileFavorites from './pages/ProfileFavorites';
+import ProfileAddresses from "@/pages/ProfileAddresses";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -49,8 +50,8 @@ const App = () => (
                   <Route path="/reset-password" element={<ResetPassword />} />
                   <Route path="/profile" element={<ProtectedRoute><ProfileLayout /></ProtectedRoute>}>
                     <Route index element={<ProfileOverview />} />
-                    {/*<Route path="addresses" element={<>ProfileAddresses </>} />*/}
-                    <Route path="favorites" element={<Favorites />} />
+                    <Route path="addresses" element={<ProfileAddresses />} />
+                    <Route path="favorites" element={<ProfileFavorites />} />
                     {/*<Route path="orders" element={<>ProfileOrders </>} />*/}
                   </Route>
                   <Route path="*" element={<NotFound />} />

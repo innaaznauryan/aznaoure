@@ -27,9 +27,9 @@ export default function ProfileLayout() {
             <NavLink to="/profile" end className={linkClass} activeClassName={activeLinkClass}>
               {t("profile.nav.overview")}
             </NavLink>
-            {/*<NavLink to="/profile/addresses" className={linkClass} activeClassName={activeLinkClass}>*/}
-            {/*  {t("profile.nav.addresses")}*/}
-            {/*</NavLink>*/}
+            <NavLink to="/profile/addresses" className={linkClass} activeClassName={activeLinkClass}>
+              {t("profile.nav.addresses")}
+            </NavLink>
             <NavLink to="/profile/favorites" className={linkClass} activeClassName={activeLinkClass}>
               {t("profile.nav.favorites")}
             </NavLink>
