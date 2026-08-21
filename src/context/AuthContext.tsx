@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { fetchCurrentUser } from "@/lib/api.ts";
+import { fetchCurrentUser } from "@/api/users.ts";
 
 interface User {
   id: number;

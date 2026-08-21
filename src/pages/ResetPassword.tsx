@@ -8,7 +8,8 @@ import { Button } from '@/components/ui/button';
 import { Form } from '@/components/ui/form';
 import SEO from "@/components/SEO.tsx";
 import AuthFormField from "@/components/auth/AuthFormField";
-import { resetPassword, ApiError } from "@/lib/api";
+import { ApiError } from "@/api/client.ts";
+import { resetPassword } from "@/api/auth.ts";
 import { createResetPasswordSchema, type ResetPasswordFormData } from '@/lib/authSchemas';
 
 export default function ResetPassword() {

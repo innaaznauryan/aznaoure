@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import SEO from "@/components/SEO.tsx";
 import { ProductGrid } from "@/components/products/ProductGrid";
 import { useFavorites } from "@/context/FavoritesContext";
-import { fetchFavorites } from "@/lib/api";
+import { fetchFavorites } from "@/api/favorites.ts";
 import { Product } from "@/lib/products";
 
 const ProfileFavorites = () => {

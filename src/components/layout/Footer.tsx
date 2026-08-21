@@ -3,7 +3,7 @@ import { Facebook, Instagram } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { categories } from "@/lib/products";
 import { getLang } from "@/lib/get-lang.ts";
-import { getMediaUrl } from "@/lib/api.ts";
+import { getMediaUrl } from "@/api/client.ts";
 
 const logo = getMediaUrl("images/logo-silver.webp")
 

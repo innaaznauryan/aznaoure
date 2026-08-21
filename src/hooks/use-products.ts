@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Category, Product } from "@/lib/products.ts";
-import { fetchProducts } from "@/lib/api.ts";
+import { fetchProducts } from "@/api/products.ts";
 import { useTranslation } from "react-i18next";
 
 export const useProducts = () => {

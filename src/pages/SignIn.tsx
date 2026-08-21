@@ -13,7 +13,8 @@ import AuthDivider from "@/components/auth/AuthDivider";
 import AuthFormField from "@/components/auth/AuthFormField";
 import { useAuth } from '../context/AuthContext';
 import { useGoogleAuth } from "@/hooks/use-google-auth";
-import { login, ApiError } from "@/lib/api";
+import { ApiError } from "@/api/client.ts";
+import { login } from "@/api/auth.ts";
 import { createSignInSchema, type SignInFormData } from '@/lib/authSchemas';
 
 interface LocationState {

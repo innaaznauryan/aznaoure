@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useEffect, useCallback, ReactNode } from "react";
 import { useAuth } from "@/context/AuthContext.tsx";
-import { fetchFavorites, addFavorite, removeFavorite } from "@/lib/api";
+import { fetchFavorites, addFavorite, removeFavorite } from "@/api/favorites.ts";
 
 interface FavoritesContextValue {
   isFavorite: (id: string) => boolean;

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Menu, X, User } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "react-i18next";
-import { getMediaUrl } from "@/lib/api.ts";
+import { getMediaUrl } from "@/api/client.ts";
 import { useAuth } from "@/context/AuthContext.tsx";
 import { NavLink } from "@/components/ui/nav-link.tsx";
 import LanguageSwitcher from "@/components/LanguageSwitcher.tsx";

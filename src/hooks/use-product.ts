@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Product } from "@/lib/products.ts";
-import { fetchProductById } from "@/lib/api.ts";
+import { fetchProductById } from "@/api/products.ts";
 import { useTranslation } from "react-i18next";
 
 export const useProduct = (id: string) => {

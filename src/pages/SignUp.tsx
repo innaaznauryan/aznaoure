@@ -12,7 +12,8 @@ import AuthDivider from "@/components/auth/AuthDivider";
 import AuthFormField from "@/components/auth/AuthFormField";
 import { useAuth } from '../context/AuthContext';
 import { useGoogleAuth } from "@/hooks/use-google-auth";
-import { signup, ApiError } from "@/lib/api";
+import { ApiError } from "@/api/client.ts";
+import { signup } from "@/api/auth.ts";
 import { createSignUpSchema, type SignUpFormData } from '@/lib/authSchemas';
 
 export default function SignUp() {

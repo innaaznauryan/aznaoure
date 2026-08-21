@@ -4,7 +4,8 @@ import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useAuth } from "@/context/AuthContext";
-import { updateProfile, ApiError } from "@/lib/api";
+import { ApiError } from "@/api/client.ts";
+import { updateProfile } from "@/api/users.ts";
 import { validatePhone, normalizeWhitespace } from "@/lib/validation";
 import {
   Dialog,

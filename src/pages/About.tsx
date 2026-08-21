@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
-import { getMediaUrl } from "@/lib/api.ts";
+import { getMediaUrl } from "@/api/client.ts";
 
 const aboutImage = getMediaUrl("images/about-craftsmanship.webp");
 

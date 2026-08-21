@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { googleAuth, ApiError } from "@/lib/api";
+import { ApiError } from "@/api/client.ts";
+import { googleAuth } from "@/api/auth.ts";
 import { useAuth } from "@/context/AuthContext";
 
 export function useGoogleAuth(from = "/") {
