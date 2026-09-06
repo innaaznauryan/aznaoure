@@ -124,6 +124,8 @@
     "failedToFetch": "Failed to fetch products. Please check your internet connection and try again.",
     "back": "Back to Collections",
     "details": "Details",
+    "inStock": "In Stock",
+    "outOfStock": "Out of Stock",
     "alsoLike": "You May Also Like",
     "related": "Related Pieces"
   },

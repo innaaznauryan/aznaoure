@@ -15,9 +15,11 @@ interface ProductCardProps {
 
 export const ProductCard = ({ product, index = 0 }: ProductCardProps) => {
   const location = useLocation();
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const lang = getLang(i18n.language);
   const { isFavorite, toggleFavorite } = useFavorites();
+
+  const inStock = product.available > 0;
 
   return (
     <motion.article
@@ -46,6 +48,11 @@ export const ProductCard = ({ product, index = 0 }: ProductCardProps) => {
           >
             <Heart className={`h-4 w-4 ${isFavorite(product.id) ? "fill-rose-500" : ""}`} />
           </Button>
+          {!inStock && (
+            <div className="absolute top-3 left-3 z-10 px-2 py-1 bg-background/80 text-xs font-medium tracking-wide uppercase">
+              {t("products.outOfStock")}
+            </div>
+          )}
         </div>
       </Link>
       

@@ -13,6 +13,7 @@ export interface Product {
   image: string;
   description: TranslatedString;
   details: TranslatedString[];
+  available: number;
   featured?: boolean;
 }
 

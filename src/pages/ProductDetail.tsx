@@ -1,27 +1,21 @@
 import { useParams, Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowLeft, Heart } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import SEO from "@/components/SEO.tsx";
-import { Button } from "@/components/ui/button";
 import { ProductCard } from "@/components/products/ProductCard";
 import { ProductImageViewer } from "@/components/products/ProductImageViewer";
+import { ProductInfo } from "@/components/products/ProductInfo";
 import { ProductNotFound } from "@/components/products/ProductNotFound";
-import { useFavorites } from "@/context/FavoritesContext";
 import { useProducts } from "@/hooks/use-products.ts";
 import { useProduct } from "@/hooks/use-product.ts";
-import { categories } from "@/lib/products.ts";
-import { getLang } from "@/lib/get-lang.ts";
-import { formatPrice } from "@/lib/utils";
 
 const ProductDetail = () => {
   const { id } = useParams<{ id: string }>();
   const location = useLocation();
-  const { t, i18n } = useTranslation();
-  const lang = getLang(i18n.language);
+  const { t } = useTranslation();
   const { getFeaturedProducts, loading: productsLoading, error: productsError } = useProducts();
   const { product, loading: productLoading, error: productError } = useProduct(id);
-  const { isFavorite, toggleFavorite } = useFavorites();
 
   const loading = productsLoading || productLoading;
   const error = productsError || productError;
@@ -79,54 +73,7 @@ const ProductDetail = () => {
             </motion.div>
 
             {/* Details */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="flex flex-col"
-            >
-              <p className="luxury-subheading mb-2">
-                {categories[product.category].name[lang]}
-              </p>
-              <h1 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-3 sm:mb-4">
-                {product.name[lang]}
-              </h1>
-              <p className="font-serif text-2xl sm:text-3xl text-primary mb-4 sm:mb-6">
-                {formatPrice(product.price)}
-              </p>
-
-              <p className="text-muted-foreground text-sm sm:text-base leading-relaxed mb-6 sm:mb-8">
-                {product.description[lang]}
-              </p>
-
-              <div className="mb-6 sm:mb-8">
-                <h3 className="font-sans text-xs sm:text-sm tracking-widest uppercase mb-3 sm:mb-4">
-                  {t("products.details")}
-                </h3>
-                <ul className="space-y-2">
-                  {product.details.map((detail, index) => (
-                    <li
-                      key={index}
-                      className="text-muted-foreground text-sm sm:text-base flex items-start"
-                    >
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 mr-3 flex-shrink-0" />
-                      {detail[lang]}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-auto">
-                <Button
-                  variant="luxuryOutline"
-                  size="lg"
-                  className="sm:size-xl sm:flex-shrink-0"
-                  onClick={() => toggleFavorite(product.id)}
-                >
-                  <Heart className={`h-4 w-4 sm:h-5 sm:w-5 ${isFavorite(product.id) ? "fill-rose-500" : ""}`} />
-                </Button>
-              </div>
-            </motion.div>
+            <ProductInfo product={product} />
           </div>
         </div>
       </section>
